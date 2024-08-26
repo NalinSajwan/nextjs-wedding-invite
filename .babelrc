@@ -1,20 +1,18 @@
 {
-    "presets": ["next/babel"],
-    "plugins": [
-        [
-            "module-resolver",
-            {
-                "root": [
-                    "./"
-                ],
-                "alias": {
-                    "@src": "./src"
-                },
-                "extensions": [
-                    ".js",
-                    ".jsx"
-                ]
-            }
-        ]
+  "experimental": {
+    "forceSwcTransforms": true
+  },
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@src": "./src"
+        },
+        "extensions": [".js", ".jsx"]
+      }
     ]
+  ]
 }
