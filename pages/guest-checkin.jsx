@@ -24,9 +24,9 @@ export default () => {
         <div
             style={{
                 height: '97vh',
-                background: '#a73737',
-                background: '-webkit-linear-gradient(to right, #7a2828, #a73737)',
-                background: 'linear-gradient(to right, #7a2828, #a73737)',
+                background: '#a9a9a9',
+                background: '-webkit-linear-gradient(to right, #7a2828, #a9a9a9)',
+                background: 'linear-gradient(to right, #7a2828, #a9a9a9)',
             }}>
             <style jsx global>
                 {`

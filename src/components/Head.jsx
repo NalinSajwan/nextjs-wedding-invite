@@ -1,7 +1,17 @@
-import Head from 'next/head';
-import resolvePath from '@src/utils/resolvePath';
+import Head from "next/head";
+import Script from "next/script";
+import { useCallback, useState } from "react";
 
-export default ({ title, description, url, logo, author, siteName, publishedTime, modifiedTime }) => {
+export default ({
+  title,
+  description,
+  url,
+  logo,
+  author,
+  siteName,
+  publishedTime,
+  modifiedTime,
+}) => {
   return (
     <Head>
       <title>{title}</title>
@@ -11,24 +21,21 @@ export default ({ title, description, url, logo, author, siteName, publishedTime
       <meta property="og:site_name" content={siteName} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={logo} />
-      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+      {publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
       <meta property="article:modified_time" content={modifiedTime} />
       <meta property="article:author" content={author} />
 
       <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="shortcut icon" href="/assets/images/favicon.png?123" type="image/png" />
-      <link rel="stylesheet" href="/assets/css/animate.css" />
-      <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-      <link rel="stylesheet" href="/assets/css/default.css" />
-      <link rel="stylesheet" href="/assets/css/style.css" />
 
       {/* FOR IE9 below */}
       {/* [if lt IE 9]> */}
-      <script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
-      <script src="/assets/js/vendor/modernizr-3.7.1.min.js"></script>
-      <script src="/assets/js/bootstrap.min.js"></script>
-      <script src="/assets/js/jquery.easing.min.js"></script>
-    </Head >
+      <Script src="/assets/js/vendor/jquery-1.12.4.min.js" />
+      <Script src="/assets/js/vendor/modernizr-3.7.1.min.js" />
+      <Script src="/assets/js/bootstrap.min.js" />
+      <Script src="/assets/js/jquery.easing.min.js" />
+    </Head>
   );
 };
