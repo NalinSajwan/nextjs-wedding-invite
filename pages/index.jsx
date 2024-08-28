@@ -1,4 +1,3 @@
-
 import QRCode from "qrcode.react";
 import useSWR from "swr";
 
@@ -57,6 +56,7 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
     ogTags,
     coupleInfo,
     venue,
+    hotel,
     weddingDay,
     weddingDate,
     weddingTime,
@@ -146,7 +146,7 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
         logo={resolvePath(ogTags.logo)}
         author={resolvePath("/")}
       />
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light">
         <button
           className="navbar-toggler"
           data-toggle="collapse"
@@ -164,8 +164,8 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
             <a className="nav-item nav-link" href="#our_story">
               Our Story
             </a>
-            <a className="nav-item nav-link" href="#footer">
-              End
+            <a className="nav-item nav-link" href="#ceremony">
+              Ceremony
             </a>
           </div>
         </div>
@@ -240,7 +240,9 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
               alt="logo"
             />
           </div>
-          <div className={`story-content ${guest.locale} row align-items-center`}>
+          <div
+            className={`story-content ${guest.locale} row align-items-center`}
+          >
             {storyContent.map((content, index) => (
               <div
                 className={`content col-${
@@ -263,10 +265,37 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
               </div>
             ))}
           </div>
+          <div className={`dress-code ${guest.locale} row align-items-center`}>
+            <div className="heading row container">
+              <img
+                className="align-self-center"
+                src={`/assets/images/our_story/${guest.locale}/dress-code-text.png`}
+                alt="logo"
+              />
+            </div>
+            <div className="colors row container">
+              <img
+                src={`/assets/images/our_story/dress-code-color-1.png`}
+                alt="logo"
+              />
+              <img
+                src={`/assets/images/our_story/dress-code-color-2.png`}
+                alt="logo"
+              />
+              <img
+                src={`/assets/images/our_story/dress-code-color-3.png`}
+                alt="logo"
+              />
+              <img
+                src={`/assets/images/our_story/dress-code-color-4.png`}
+                alt="logo"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="coming_soon" className="coming_soon_area pt-20 pb-70">
+      {/* <section id="coming_soon" className="coming_soon_area pt-20 pb-70">
         <div className="coming_soon_shape_1" style={{ zIndex: 1 }}>
           <img src="/assets/images/shape-1.png" alt="shape" />
         </div>
@@ -361,117 +390,80 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
         <div className="coming_soon_shape_2">
           <img src="/assets/images/shape-2.png" alt="shape" />
         </div>
-      </section>
+      </section> */}
 
-      <section id="contact" className="contact_area">
-        <div className="container">
-          <div
-            className="contact_wrapper wow fadeInUpBig"
-            data-wow-duration="1.3s"
-            data-wow-delay="0.4s"
-            style={{
-              paddingBottom: 30,
-              boxShadow: "none",
-              visibility: "visible",
-              animationDuration: "1.3s",
-              animationDelay: "0.4s",
-              animationName: "fadeInUp",
-            }}
-          >
-            <div className="row justify-content-center">
-              <div className="col-lg-9">
-                <div className="section_title text-center pb-30">
-                  {guest.name && (
-                    <div
-                      style={{
-                        textAlign: "center",
-                        maxWidth: 400,
-                        margin: "auto",
-                        paddingBottom: 20,
-                      }}
-                    >
-                      {t("invitationGreeting")}
-                      <p style={{ fontSize: "1.5rem" }}>{guest.name},</p>
-                    </div>
-                  )}
-                  <h3 className="title">{t("invitationIntro")}</h3>
-                  <div
-                    style={{
-                      textAlign: "left",
-                      paddingTop: 20,
-                      paddingBottom: 20,
-                      maxWidth: 400,
-                      margin: "auto",
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontSize: "1rem",
-                        lineHeight: "inherit",
-                        color: "dimgrey",
-                        textAlign: t("invitationContentTextAlign"),
-                      }}
-                    >
-                      <i>
-                        {t("invitationContent")}
-                        {t("invitationOutro") &&
-                          !t("invitationOutro").startsWith("[missing") && (
-                            <>
-                              <br />
-                              <br />
-                              {t("invitationOutro")}
-                            </>
-                          )}
-                      </i>
-                    </p>
-                  </div>
-
-                  {appConfig.showQrCode && guest.name && (
-                    <div style={{ marginTop: 20, marginBottom: 35 }}>
-                      <QRCode value={guest.guestId} />
-                    </div>
-                  )}
-
-                  <p className="text">
-                    <a
-                      href={venue.mapUrl}
-                      style={{
-                        borderBottom: "0.2rem solid",
-                        marginBottom: 10,
-                      }}
-                    >
-                      <b>{venue.name}</b>
-                    </a>
-                    <br />
-                    {venue.addressLine1}
-                    <br />
-                    {venue.addressLine2}
-                    <br />
-                    {venue.country}.
-                  </p>
-                  <p className="text" style={{ marginTop: 10 }}>
-                    <b>
-                      {weddingDate} · {weddingTime}
-                    </b>
-                  </p>
-
-                  {t("invitationClosing") &&
-                    !t("invitationClosing").startsWith("[missing") && (
-                      <p
-                        className="text"
-                        style={{
-                          fontStyle: "italic",
-                          maxWidth: 420,
-                          margin: "auto",
-                          marginTop: 60,
-                        }}
-                        dangerouslySetInnerHTML={{
-                          __html: t("invitationClosing"),
-                        }}
-                      ></p>
-                    )}
-                </div>
+      <section id="ceremony" className="contact_area">
+        <div className="ceremony container">
+          <img
+            className="element-flower top left"
+            src={"/assets/images/ceremony/element-flower-top-left.png"}
+            alt="logo"
+          />
+          <img
+            className="element-flower top right"
+            src={"/assets/images/ceremony/element-flower-top-right.png"}
+            alt="logo"
+          />
+          <img
+            className="element-flower bottom left"
+            src={"/assets/images/ceremony/element-flower-bottom-left.png"}
+            alt="logo"
+          />
+          <img
+            className="element-flower bottom right"
+            src={"/assets/images/ceremony/element-flower-bottom-right.png"}
+            alt="logo"
+          />
+          <div className="banner row align-items-center">
+            <img
+              className={`element ${guest.locale}`}
+              src={`/assets/images/ceremony/${guest.locale}/top-banner.png`}
+              alt="logo"
+            />
+          </div>
+          <div className={`content ${guest.locale} row align-items-center`}>
+            <div className={`content col-6 align-self-center`}>
+              <div className="image-banner row container">
+                <img
+                  className="element"
+                  src={`/assets/images/ceremony/${guest.locale}/ceremony-event.png`}
+                  alt="logo"
+                />
               </div>
+              <div className="map row container">
+                <a href={venue.mapUrl} target="_blank" className="view-map">
+                  {venue.mapText}
+                </a>
+              </div>
+            </div>
+            <div className={`content col-6 align-self-center`}>
+              <div className="image-banner row container">
+                <img
+                  className="element"
+                  src={`/assets/images/ceremony/${guest.locale}/ceremony-hotel.png`}
+                  alt="logo"
+                />
+              </div>
+              <div className="map row container">
+                <a href={hotel.mapUrl} target="_blank" className="view-map">
+                  {venue.mapText}
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className={`timeline ${guest.locale} row align-items-center`}>
+            <div className="heading row container">
+              <img
+                className="align-self-center"
+                src={`/assets/images/ceremony/${guest.locale}/ceremony-timeline-text.png`}
+                alt="logo"
+              />
+            </div>
+            <div className="main row container align-self-center">
+              <img
+                src={`/assets/images/ceremony/${guest.locale}/ceremony-timeline.png`}
+                alt="logo"
+              />
             </div>
           </div>
         </div>
