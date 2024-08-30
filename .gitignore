@@ -4,3 +4,4 @@ now.*.json
 node_modules
 guest_list.csv
 pages/guest_list.json
+.env

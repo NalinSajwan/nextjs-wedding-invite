@@ -1,6 +1,3 @@
-import QRCode from "qrcode.react";
-import useSWR from "swr";
-
 import Head from "@src/components/Head";
 import resolvePath from "@src/utils/resolvePath";
 import appConfig from "@src/config/app";
@@ -9,6 +6,7 @@ import guestList from "./guest_list.json";
 import format from "date-fns/format";
 import { AddToCalendarButton } from "add-to-calendar-button-react";
 import { useState, useCallback } from "react";
+import { useForm } from "react-hook-form";
 
 const STORY_TEXT_CUSTOM = {
   en: {
@@ -42,6 +40,13 @@ const translateConfig = (appConfig, locale) => {
 const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
   const t = useTranslation(guest.locale);
   const [show, toggleBar] = useState(false);
+  const [inviteSuccess, setInviteSuccess] = useState(false);
+
+  const {
+    register: registerInvite,
+    handleSubmit: handleSubmitInvite,
+    formState: { errors: inviteErrors },
+  } = useForm();
 
   const toggleNavBar = useCallback(
     (e) => {
@@ -60,6 +65,7 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
     weddingDay,
     weddingDate,
     weddingTime,
+    invitationForm,
     calendarInfo,
   } = translateConfig(appConfig, guest.locale);
   const { brideName, groomName, coupleNameFormat } = coupleInfo;
@@ -124,6 +130,20 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
     };
   });
 
+  const onInviteSubmit = async (data) => {
+    const res = await fetch("/api/create-invite", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      console.error("Request failed: ", res);
+      return;
+    }
+
+    setInviteSuccess(true);
+  };
+
   return (
     <div>
       <style jsx global>
@@ -166,6 +186,9 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
             </a>
             <a className="nav-item nav-link" href="#ceremony">
               Ceremony
+            </a>
+            <a className="nav-item nav-link" href="#invitation">
+              RSVP
             </a>
           </div>
         </div>
@@ -295,103 +318,6 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
         </div>
       </section>
 
-      {/* <section id="coming_soon" className="coming_soon_area pt-20 pb-70">
-        <div className="coming_soon_shape_1" style={{ zIndex: 1 }}>
-          <img src="/assets/images/shape-1.png" alt="shape" />
-        </div>
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-4">
-              <div
-                className="section_title pt-50 wow fadeIn"
-                data-wow-duration="1.3s"
-                data-wow-delay="0.2s"
-                style={{
-                  visibility: "visible",
-                  animationDuration: "1.3s",
-                  animationDelay: "0.2s",
-                  animationName: "fadeIn",
-                }}
-              >
-                <h3 className="title">{t("eventDate")}:</h3>
-                <p>{weddingDateBrief}</p>
-                <div
-                  style={{
-                    paddingTop: "0.2rem",
-                    paddingBottom: "0.2rem",
-                  }}
-                >
-                  <AddToCalendarButton
-                    options={["Apple", "Google"]}
-                    name={calendarEvent.title}
-                    description={calendarEvent.description}
-                    startDate={calendarEvent.startDate}
-                    endDate={calendarEvent.endDate}
-                    startTime={calendarEvent.startTime}
-                    endTime={calendarEvent.endTime}
-                    location={calendarEvent.location}
-                    timeZone={Intl.DateTimeFormat().resolvedOptions().timeZone}
-                  />
-                </div>
-                <img src="/assets/images/section_shape.png" alt="Shape" />
-              </div>
-            </div>
-            <div className="col-lg-8">
-              <div
-                className="wow fadeIn"
-                data-wow-duration="1.3s"
-                data-wow-delay="0.6s"
-                style={{
-                  visibility: "visible",
-                  animationDuration: "1.3s",
-                  animationDelay: "0.6s",
-                  animationName: "fadeIn",
-                }}
-              >
-                <div className="coming_soon_count d-flex justify-content-end pt-20">
-                  <div
-                    style={{
-                      marginRight: 20,
-                      width: 360,
-                      height: 138,
-                      backgroundColor: "transparent",
-                    }}
-                    className="single_count d-flex align-items-center justify-content-center mt-30"
-                  >
-                    <div
-                      className="count_content"
-                      style={{ zIndex: 1, paddingTop: 20 }}
-                    >
-                      <a href={venue.mapUrl}>
-                        <img
-                          style={{ borderRadius: 5 }}
-                          src="/assets/images/jadore-hotel-map-horizontal.png"
-                          alt="J'dore hotel map"
-                        />
-                      </a>
-                      <a
-                        href={venue.mapUrl}
-                        style={{
-                          maxWidth: "75vw",
-                          overflowX: "hidden",
-                          textOverflow: "ellipsis",
-                          marginTop: 10,
-                        }}
-                      >
-                        {venue.mapUrl}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="coming_soon_shape_2">
-          <img src="/assets/images/shape-2.png" alt="shape" />
-        </div>
-      </section> */}
-
       <section id="ceremony" className="contact_area">
         <div className="ceremony container">
           <img
@@ -469,6 +395,184 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
         </div>
       </section>
 
+      <section id="invitation" className="full-height coming_soon_area">
+        <div className={`invitation ${guest.locale} container`}>
+          <div className="form-section col-12">
+            <div className="banner">
+              <img
+                src={`assets/images/invitation/${guest.locale}/banner-text.png`}
+                alt="shape"
+              />
+            </div>
+            <div
+              className={`invitation-form ${guest.locale} row align-items-center`}
+            >
+              {!inviteSuccess ? (
+                <form onSubmit={handleSubmitInvite(onInviteSubmit)}>
+                  <div className="form-group col-md-12">
+                    <input
+                      id="invite_name"
+                      type="text"
+                      className="form-control"
+                      placeholder={invitationForm.input.name.placeholder}
+                      {...registerInvite("name", { required: true })}
+                    />
+                    {inviteErrors.name && (
+                      <small id="name_help" className="form-text text-error">
+                        {invitationForm.input.helpText}
+                      </small>
+                    )}
+                  </div>
+                  <div className="form-group col-md-12">
+                    <input
+                      id="invite_email"
+                      type="email"
+                      className="form-control"
+                      placeholder={invitationForm.input.email.placeholder}
+                      {...registerInvite("email", { required: true })}
+                    />
+                    {inviteErrors.email && (
+                      <small id="email_help" className="form-text text-error">
+                        {invitationForm.input.helpText}
+                      </small>
+                    )}
+                  </div>
+                  <div className="form-group col-md-12">
+                    <select
+                      id="invite_connection"
+                      className="form-control"
+                      {...registerInvite("connectionFrom", { required: true })}
+                    >
+                      <option value="">
+                        {invitationForm.input.connectionFrom.placeholder}
+                      </option>
+                      {invitationForm.input.connectionFrom.options.map(
+                        (option) => (
+                          <option value={option.value}>{option.text}</option>
+                        )
+                      )}
+                    </select>
+                    {inviteErrors.connectionFrom && (
+                      <small
+                        id="location_help"
+                        className="form-text text-error"
+                      >
+                        {invitationForm.input.helpText}
+                      </small>
+                    )}
+                  </div>
+                  <div className="form-group col-md-12">
+                    <select
+                      id="invite_adults"
+                      className="form-control"
+                      {...registerInvite("adultGuests", {
+                        required: true,
+                        min: 1,
+                      })}
+                    >
+                      <option value={0}>
+                        {invitationForm.input.adultGuests.placeholder}
+                      </option>
+                      <option value={1}>01</option>
+                      <option value={2}>02</option>
+                      <option value={3}>03</option>
+                      <option value={4}>04</option>
+                      <option value={5}>05</option>
+                    </select>
+                    {inviteErrors.adultGuests && (
+                      <small
+                        id="location_help"
+                        className="form-text text-error"
+                      >
+                        {invitationForm.input.helpText}
+                      </small>
+                    )}
+                  </div>
+                  <div className="form-group col-md-12">
+                    <select
+                      id="invite_kids"
+                      className="form-control"
+                      {...registerInvite("kidGuests", {
+                        required: true,
+                        min: 0,
+                      })}
+                    >
+                      <option value={0}>
+                        {invitationForm.input.kidGuests.placeholder}
+                      </option>
+                      <option value={1}>01</option>
+                      <option value={2}>02</option>
+                      <option value={3}>03</option>
+                      <option value={4}>04</option>
+                      <option value={5}>05</option>
+                    </select>
+                  </div>
+                  <div className="form-group col-md-12">
+                    <select
+                      id="invite_location"
+                      className="form-control"
+                      {...registerInvite("location", { required: true })}
+                    >
+                      <option value="">
+                        {invitationForm.input.location.placeholder}
+                      </option>
+                      {invitationForm.input.location.options.map((option) => (
+                        <option value={option.value}>{option.text}</option>
+                      ))}
+                    </select>
+                    {inviteErrors.location && (
+                      <small
+                        id="location_help"
+                        className="form-text text-error"
+                      >
+                        {invitationForm.input.helpText}
+                      </small>
+                    )}
+                  </div>
+                  <div className="form-group col-md-12">
+                    <select
+                      id="invite_meals"
+                      className="form-control"
+                      {...registerInvite("mealPreference", { required: true })}
+                    >
+                      <option value="">
+                        {invitationForm.input.mealPreference.placeholder}
+                      </option>
+                      {invitationForm.input.mealPreference.options.map(
+                        (option) => (
+                          <option value={option.value}>{option.text}</option>
+                        )
+                      )}
+                    </select>
+                    {inviteErrors.mealPreference && (
+                      <small
+                        id="location_help"
+                        className="form-text text-error"
+                      >
+                        {invitationForm.input.helpText}
+                      </small>
+                    )}
+                  </div>
+                  <div className="form-button col-md-12">
+                    <button type="submit" className="btn">
+                      {invitationForm.formButton.text}
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="banner">{invitationForm.successMessage}</div>
+              )}
+            </div>
+          </div>
+          <div className="invitation_left_flower">
+            <img src="assets/images/invitation/left-flower.png" alt="shape" />
+          </div>
+          <div className="invitation_right_flower">
+            <img src="assets/images/invitation/right-flower.png" alt="shape" />
+          </div>
+        </div>
+      </section>
+
       {/* Footer section */}
       <footer id="footer" className="footer_area">
         <div className="footer_shape_1">
@@ -526,7 +630,8 @@ ShowInvite.getInitialProps = (ctx) => {
       guestId: "",
       name: "",
       greeting: "",
-      locale: localeParams,
+      locale: "vn",
+      // locale: localeParams,
     },
   };
 

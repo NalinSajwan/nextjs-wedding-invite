@@ -20,8 +20,12 @@ section {
   height: calc(100vh - 65px);
 }
 
+section.full-height {
+  height: 100%;
+}
+
 .single_slider.landing {
-  height: 100vh;
+  height: calc(100vh - 65px);
 }
 
 .single_slider.landing .center {
@@ -40,7 +44,7 @@ section {
 .single_slider.landing .center.main-text {
   max-width: 700px;
   position: absolute;
-  top: 120px;
+  top: 80px;
   z-index: 1;
 }
 
@@ -55,7 +59,7 @@ section {
 }
 
 .single_slider.landing .element-flower.bottom {
-  bottom: 0;
+  bottom: 0px;
   max-width: 130px;
 }
 
@@ -244,4 +248,134 @@ section {
 
 .ceremony .timeline .main > img {
   width: 60vw;
+}
+
+.invitation .invitation-form {
+  justify-content: center;
+}
+
+.invitation {
+  max-width: 950px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.invitation.container {
+  position: relative;
+  background: #f8f3f0;
+  padding: 20px;
+}
+
+.invitation .banner {
+  margin: 30px 0;
+  justify-content: center;
+  text-align: center;
+}
+
+.invitation .banner > img {
+  max-width: 200px;
+}
+
+.invitation.vn .banner > img {
+  max-width: 260px;
+}
+
+.invitation > .form-section {
+  border: 1px solid transparent;
+  border-radius: 0;
+  padding: 0 180px 50px;
+  position: relative;
+  z-index: 11
+}
+
+.invitation > .form-section:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -11;
+  content: "";
+  /* border: 1px solid #c8a898 */
+}
+
+.form-control {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #d9d9d9;
+  color: #fff;
+  border-radius: 0;
+  font-size: 18px;
+  padding-left: 0
+}
+
+.form-control:focus {
+  background: transparent;
+  outline: none;
+  box-shadow: none
+}
+
+.form-control::placeholder {
+  color: #fff
+}
+
+.invitation-form > form {
+  width: 100%;
+}
+
+.invitation .invitation-form .form-control {
+  border-bottom: 1px solid silver;
+  color: #464646
+}
+
+.invitation .invitation-form .form-control::placeholder {
+  color: #464646
+}
+
+.invitation .invitation-form .radio-buttons [type=radio]:checked+label,
+.invitation .invitation-form .radio-buttons [type=radio]:not(:checked)+label,
+.invitation .invitation-form .radio-buttons p,
+.invitation .invitation-form select.form-control,
+.invitation .invitation-form select.form-control option {
+  color: #464646
+}
+
+.invitation .invitation-form .radio-buttons [type=radio]:checked+label:before,
+.invitation .invitation-form .radio-buttons [type=radio]:not(:checked)+label:before {
+  height: 18px;
+  border: 1px solid #c8a898
+}
+
+.invitation .invitation-form .radio-buttons [type=radio]:checked+label:after,
+.invitation .invitation-form .radio-buttons [type=radio]:not(:checked)+label:after {
+  background: #c8a898
+}
+
+.form-group > .form-text.text-error {
+  color: red;
+}
+
+.invitation-form > form > .form-button {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.invitation-form .form-button > button {
+  border: none;
+  background: #c8a898;
+  color: #fff;
+}
+
+.invitation_left_flower {
+  width: 200px;
+  left: -108px;
+  bottom: -4px;
+  position: absolute;
+}
+
+.invitation_right_flower {
+  width: 200px;
+  right: -92px;
+  top: -95px;
+  position: absolute;
 }
