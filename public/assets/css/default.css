@@ -18,6 +18,7 @@ html {
   padding: 15px !important;
   height: 65px;
   background-color: #dfd3d2;
+  font-family: Marriage;
 }
 
 section {
@@ -414,6 +415,7 @@ section.full-height {
 .home .countdownWrapper .countdownSection .countWrapper .unit {
   font-size: 25px;
   text-align: center;
+  margin-top: -15px;
 }
 
 .home .count-days {
@@ -426,4 +428,43 @@ section.full-height {
   position: absolute;
   top: 45%;
   right: 15%;
+}
+
+.showtime.container {
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.showtime .banner {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.showtime .banner > .element {
+  width: 250px;
+}
+
+.showtime.vn .banner > .element{
+  width: 500px;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  padding: 20px 60px 10px;
+  font-family: Wedding;
+  background-color: #dfd3d2;
+}
+
+.footer .footer-col {
+  color: #666;
+}
+
+.footer .footer-col > .row {
+  justify-content: center;
+}
+
+.footer .footer-col .heading {
+  padding-bottom: 10px;
 }

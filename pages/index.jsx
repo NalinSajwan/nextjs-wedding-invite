@@ -2,15 +2,13 @@ import Head from "@src/components/Head";
 import resolvePath from "@src/utils/resolvePath";
 import appConfig from "@src/config/app";
 import { useTranslation, defaultLocale } from "@src/i18n";
-import guestList from "./guest_list.json";
 import format from "date-fns/format";
-import { AddToCalendarButton } from "add-to-calendar-button-react";
 import { useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import Gallery from "react-photo-gallery";
 import Countdown from "react-countdown";
-import 'react-photo-view/dist/react-photo-view.css';
-import { PhotoProvider, PhotoView } from 'react-photo-view';
+import "react-photo-view/dist/react-photo-view.css";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const STORY_TEXT_CUSTOM = {
   en: {
@@ -41,7 +39,7 @@ const translateConfig = (appConfig, locale) => {
   return { ...appConfig, ...configLang };
 };
 
-const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
+const ShowInvite = ({ currentUrl, guest }) => {
   const t = useTranslation(guest.locale);
   const [show, toggleBar] = useState(false);
   const [inviteSuccess, setInviteSuccess] = useState(false);
@@ -248,7 +246,6 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
 
   const imageRenderer = ({ index, left, top, key, photo }) => {
     const cont = {
-      backgroundColor: "#eee",
       cursor: "pointer",
       overflow: "hidden",
       position: "absolute",
@@ -259,14 +256,47 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
     return (
       <div
         key={`image-renderer-${key + 1}`}
-        style={{ margin: "2px", height: photo.height, width: photo.width, ...cont }}
+        style={{
+          margin: "2px",
+          height: photo.height,
+          width: photo.width,
+          ...cont,
+        }}
       >
         <PhotoView key={index} src={photo.src}>
           <img src={photo.src} alt="" />
         </PhotoView>
       </div>
-    )
-  }
+    );
+  };
+
+  const headers = [
+    {
+      href: "#",
+      value: "home",
+      text: "Home",
+    },
+    {
+      href: "#our_story",
+      value: "our_story",
+      text: "Our Story",
+    },
+    {
+      href: "#ceremony",
+      value: "ceremony",
+      text: "Ceremony",
+    },
+    {
+      href: "#invitation",
+      value: "invitation",
+      text: "RSVP",
+    },
+    {
+      href: "#showtime",
+      value: "showtime",
+      text: "Showtime",
+    },
+  ];
 
   return (
     <div>
@@ -285,7 +315,6 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
         guestName={guest.name}
         url={currentUrl}
         date={weddingDateBrief}
-        modifiedTime={guestListLastUpdatedAt}
         venue={venueBrief}
         logo={resolvePath(ogTags.logo)}
         author={resolvePath("/")}
@@ -302,18 +331,16 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
         </button>
         <div className={`collapse navbar-collapse ${show ? "show" : ""}`}>
           <div className="navbar-nav">
-            <a className="nav-item nav-link active" href="#">
-              Home <span className="sr-only">(current)</span>
-            </a>
-            <a className="nav-item nav-link" href="#our_story">
-              Our Story
-            </a>
-            <a className="nav-item nav-link" href="#ceremony">
-              Ceremony
-            </a>
-            <a className="nav-item nav-link" href="#invitation">
-              RSVP
-            </a>
+            {headers.map((header, index) => (
+              <a
+                key={index}
+                className="nav-item nav-link"
+                value={header.value}
+                href={header.href}
+              >
+                {header.text}
+              </a>
+            ))}
           </div>
         </div>
       </nav>
@@ -528,6 +555,7 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
           <div className="form-section col-12">
             <div className="banner">
               <img
+                className={"element"}
                 src={`assets/images/invitation/${guest.locale}/banner-text.png`}
                 alt="shape"
               />
@@ -701,51 +729,46 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
         </div>
       </section>
 
-      <section id="ceremony" className="full-height contact_area">
-        <div className="ceremony container">
+      <section id="showtime" className="full-height contact_area">
+        <div className={`showtime ${guest.locale} container`}>
+          <div className="banner">
+            <img
+              className={"element"}
+              src={`assets/images/showtime/${guest.locale}/banner-text.png`}
+              alt="shape"
+            />
+          </div>
           <PhotoProvider>
-            <div className="foo">
-              <Gallery photos={photos} direction={"column"} renderImage={imageRenderer} />
-            </div>
+            <Gallery
+              photos={photos}
+              direction={"column"}
+              renderImage={imageRenderer}
+            />
           </PhotoProvider>
         </div>
       </section>
 
       {/* Footer section */}
       <footer id="footer" className="footer_area">
-        <div className="footer_shape_1">
-          <img src="/assets/images/shape-1.png" alt="shape" />
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-4">
-              <div className="widget about-widget">
-                <div className="logo widget-title">
-                  <a className="logo" href="index">
-                    Mawhub
-                  </a>
-                </div>
-                <p>
-                  We can’t wait to see all of our beloved friends and relatives
-                  at our wedding.
-                </p>
-              </div>
+        <div className="footer">
+          <div className="col-lg-6 footer-col left">
+            <div className="heading row">
+              <h3>Copyright</h3>
             </div>
-            <div className="col-lg-4 text-center">
-              <div className="footer_title">
-                <h3 className="title">{coupleName}</h3>
-              </div>
+            <div className="row">
+              <span>© Nalin Sajwan</span>
             </div>
-            <div className="col-lg-4">
-              <div className="widget wpo-service-link-widget">
-                <div className="widget-title">
-                  <h3>Contact </h3>
+          </div>
+          <div className="col-lg-6 footer-col right">
+            <div className="row">
+              <div>
+                <div className="heading row">
+                  <h3>Contact</h3>
                 </div>
-                <div className="contact-ft">
+                <div className="row">
                   <ul>
-                    <li>mawhub@gmail.com</li>
-                    <li>+0123 456 789</li>
-                    <li>4517 Washington Ave. Manchester, Kentucky 3945</li>
+                    <li>hatrinh.htt@gmail.com</li>
+                    <li>+61 414 823 049</li>
                   </ul>
                 </div>
               </div>
@@ -779,7 +802,6 @@ ShowInvite.getInitialProps = (ctx) => {
   }
 
   const guestData = guestList.data;
-  const guestListLastUpdatedAt = guestList.meta.lastUpdatedAt;
   const { name, greeting, locale } =
     guestData.filter((guest) => guest.guestId === guestId)[0] || {};
   if (!name) {
@@ -791,7 +813,6 @@ ShowInvite.getInitialProps = (ctx) => {
 
   return {
     currentUrl,
-    guestListLastUpdatedAt,
     guest: {
       name,
       greeting,
