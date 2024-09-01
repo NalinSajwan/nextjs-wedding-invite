@@ -98,6 +98,13 @@ const baseConfig = {
     },
     successMessage: `Okei dokei! See you there with lots of love 🫶🏻`
   },
+  headers: {
+    home: "Home",
+    ourStory: "Our Story",
+    ceremony: "Ceremony",
+    rsvp: "RSVP",
+    showtime: "Showtime"
+  }
 };
 
 const lang = {
@@ -176,6 +183,13 @@ const lang = {
       },
       successMessage: `Ok luôn! Yêu thương hẹn gặp lại nhó 🫶🏻`
     },
+    headers: {
+      home: "Trang chủ",
+      ourStory: "Câu chuyện",
+      ceremony: "Sự kiện",
+      rsvp: "Lời hồi âm",
+      showtime: "Khoảnh khắc"
+    }
   },
 };
 

@@ -64,6 +64,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
     coupleInfo,
     venue,
     hotel,
+    headers: headersText,
     weddingDay,
     weddingDate,
     weddingTimestamp,
@@ -274,27 +275,27 @@ const ShowInvite = ({ currentUrl, guest }) => {
     {
       href: "#",
       value: "home",
-      text: "Home",
+      text: headersText.home,
     },
     {
       href: "#our_story",
       value: "our_story",
-      text: "Our Story",
+      text: headersText.ourStory,
     },
     {
       href: "#ceremony",
       value: "ceremony",
-      text: "Ceremony",
+      text: headersText.ceremony,
     },
     {
       href: "#invitation",
       value: "invitation",
-      text: "RSVP",
+      text: headersText.rsvp,
     },
     {
       href: "#showtime",
       value: "showtime",
-      text: "Showtime",
+      text: headersText.showtime,
     },
   ];
 
@@ -319,7 +320,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
         logo={resolvePath(ogTags.logo)}
         author={resolvePath("/")}
       />
-      <nav className="navbar navbar-expand-lg navbar-light">
+      <nav className={`navbar ${guest.locale} navbar-expand-lg navbar-light`}>
         <button
           className="navbar-toggler"
           data-toggle="collapse"
