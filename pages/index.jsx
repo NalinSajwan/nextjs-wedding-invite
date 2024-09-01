@@ -9,6 +9,8 @@ import { useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import Gallery from "react-photo-gallery";
 import Countdown from "react-countdown";
+import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const STORY_TEXT_CUSTOM = {
   en: {
@@ -244,6 +246,28 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
     );
   };
 
+  const imageRenderer = ({ index, left, top, key, photo }) => {
+    const cont = {
+      backgroundColor: "#eee",
+      cursor: "pointer",
+      overflow: "hidden",
+      position: "absolute",
+      left,
+      top,
+    };
+
+    return (
+      <div
+        key={`image-renderer-${key + 1}`}
+        style={{ margin: "2px", height: photo.height, width: photo.width, ...cont }}
+      >
+        <PhotoView key={index} src={photo.src}>
+          <img src={photo.src} alt="" />
+        </PhotoView>
+      </div>
+    )
+  }
+
   return (
     <div>
       <style jsx global>
@@ -293,6 +317,7 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
           </div>
         </div>
       </nav>
+
       <section id="home" className="header_area">
         <div className="home header_slider">
           <div className="slick-list draggable">
@@ -678,7 +703,11 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
 
       <section id="ceremony" className="full-height contact_area">
         <div className="ceremony container">
-          <Gallery photos={photos} direction={"column"} />
+          <PhotoProvider>
+            <div className="foo">
+              <Gallery photos={photos} direction={"column"} renderImage={imageRenderer} />
+            </div>
+          </PhotoProvider>
         </div>
       </section>
 
