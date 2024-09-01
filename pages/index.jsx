@@ -7,6 +7,8 @@ import format from "date-fns/format";
 import { AddToCalendarButton } from "add-to-calendar-button-react";
 import { useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
+import Gallery from "react-photo-gallery";
+import Countdown from "react-countdown";
 
 const STORY_TEXT_CUSTOM = {
   en: {
@@ -64,6 +66,7 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
     hotel,
     weddingDay,
     weddingDate,
+    weddingTimestamp,
     weddingTime,
     invitationForm,
     calendarInfo,
@@ -144,6 +147,103 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
     setInviteSuccess(true);
   };
 
+  const photos = [
+    {
+      src: `assets/images/pre_wedding_photos/IMG_01.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_02.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_03.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_04.JPG`,
+      width: 1,
+      height: 1.5,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_05.JPG`,
+      width: 1,
+      height: 1.5,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_06.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_07.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_08.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_09.JPG`,
+      width: 1,
+      height: 1.5,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_10.JPG`,
+      width: 1,
+      height: 1.4,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_11.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_12.JPG`,
+      width: 1,
+      height: 1.6,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_15.JPG`,
+      width: 1,
+      height: 1.4,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_13.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_14.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+  ];
+
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+    return (
+      <span>
+        <div className="countdownWrapper">
+          <div className="countdownSection">
+            <div className="countWrapper count-days">
+              <div className="count">{days}</div>
+              <div className="unit">days</div>
+            </div>
+            <div className="countWrapper count-hours">
+              <div className="count">{hours}</div>
+              <div className="unit">hours</div>
+            </div>
+          </div>
+        </div>
+      </span>
+    );
+  };
+
   return (
     <div>
       <style jsx global>
@@ -194,7 +294,7 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
         </div>
       </nav>
       <section id="home" className="header_area">
-        <div className="header_slider">
+        <div className="home header_slider">
           <div className="slick-list draggable">
             <div className="slick-track" style={{ opacity: 1 }}>
               <div className="single_slider landing bg_cover d-flex align-items-center">
@@ -228,6 +328,9 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
                   src={"/assets/images/home/nalin-ha-photo.gif"}
                   alt="logo"
                 />
+                <div className={`countdown`}>
+                  <Countdown date={weddingTimestamp} renderer={renderer} />
+                </div>
               </div>
             </div>
           </div>
@@ -573,51 +676,53 @@ const ShowInvite = ({ currentUrl, guestListLastUpdatedAt, guest }) => {
         </div>
       </section>
 
+      <section id="ceremony" className="full-height contact_area">
+        <div className="ceremony container">
+          <Gallery photos={photos} direction={"column"} />
+        </div>
+      </section>
+
       {/* Footer section */}
       <footer id="footer" className="footer_area">
         <div className="footer_shape_1">
           <img src="/assets/images/shape-1.png" alt="shape" />
         </div>
         <div className="container">
-          <div className="footer_widget pt-50 pb-10 text-center">
-            <div className="footer_logo">
-              {logo.footerLogo &&
-                (logo.footerLogoType === "mp4" ? (
-                  <video height="140" autoPlay muted loop>
-                    <source src={logo.footerLogo} type="video/mp4" />
-                  </video>
-                ) : (
-                  <img src={logo.footerLogo} />
-                ))}
+          <div className="row">
+            <div className="col-lg-4">
+              <div className="widget about-widget">
+                <div className="logo widget-title">
+                  <a className="logo" href="index">
+                    Mawhub
+                  </a>
+                </div>
+                <p>
+                  We can’t wait to see all of our beloved friends and relatives
+                  at our wedding.
+                </p>
+              </div>
             </div>
-            <div className="footer_title">
-              <h3 className="title">{coupleName}</h3>
+            <div className="col-lg-4 text-center">
+              <div className="footer_title">
+                <h3 className="title">{coupleName}</h3>
+              </div>
+            </div>
+            <div className="col-lg-4">
+              <div className="widget wpo-service-link-widget">
+                <div className="widget-title">
+                  <h3>Contact </h3>
+                </div>
+                <div className="contact-ft">
+                  <ul>
+                    <li>mawhub@gmail.com</li>
+                    <li>+0123 456 789</li>
+                    <li>4517 Washington Ave. Manchester, Kentucky 3945</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        {appConfig.showBuiltWithInfo && (
-          <div
-            style={{
-              textAlign: "center",
-              marginBottom: 40,
-            }}
-          >
-            <small>
-              <a
-                style={{ color: "grey" }}
-                href="https://github.com/wzulfikar/nextjs-wedding-invite"
-              >
-                Built with&nbsp;
-                <object
-                  style={{ height: "0.5rem" }}
-                  data="/assets/images/heart.svg"
-                  type="image/svg+xml"
-                ></object>
-                &nbsp;using NextJS
-              </a>
-            </small>
-          </div>
-        )}
       </footer>
     </div>
   );
@@ -630,8 +735,8 @@ ShowInvite.getInitialProps = (ctx) => {
       guestId: "",
       name: "",
       greeting: "",
-      locale: "vn",
-      // locale: localeParams,
+      // locale: "vn",
+      locale: localeParams,
     },
   };
 

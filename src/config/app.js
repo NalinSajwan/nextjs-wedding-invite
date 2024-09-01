@@ -2,6 +2,7 @@ import { placeholder } from "i18n-js";
 
 const baseConfig = {
   weddingDay: "Saturday",
+  weddingTimestamp: new Date(1729242000000).toISOString(),
   weddingTime: "16.00 - 22.00",
   weddingDate: "Oct 19, 2024",
   showBuiltWithInfo: true,
@@ -11,9 +12,9 @@ const baseConfig = {
     timeEndISO: new Date(1729400400000).toISOString(), // Sun Oct 20, 2024 12:00pm Asia/Ho Chi Minh (+07)
   },
   coupleInfo: {
-    brideName: "Cindee",
+    brideName: "Ha",
     groomName: "Nalin",
-    coupleNameFormat: "GROOM_FIRST",
+    coupleNameFormat: "BRIDE_FIRST",
   },
   venue: {
     name: "J'adore Homestay",
