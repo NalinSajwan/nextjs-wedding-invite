@@ -47,11 +47,18 @@ const ShowInvite = ({ currentUrl, guest }) => {
   const t = useTranslation(locale);
   const [show, toggleBar] = useState(false);
   const [inviteSuccess, setInviteSuccess] = useState(false);
+  const [wishesSuccess, setWishesSuccess] = useState(false);
 
   const {
     register: registerInvite,
     handleSubmit: handleSubmitInvite,
     formState: { errors: inviteErrors },
+  } = useForm();
+
+  const {
+    register: registerWishes,
+    handleSubmit: handleSubmitWishes,
+    formState: { errors: wishesErrors },
   } = useForm();
 
   const toggleNavBar = useCallback(
@@ -74,6 +81,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
     weddingTimestamp,
     weddingTime,
     invitationForm,
+    wishesForm,
     calendarInfo,
   } = translateConfig(appConfig, locale);
   const { brideName, groomName, coupleNameFormat } = coupleInfo;
@@ -150,6 +158,20 @@ const ShowInvite = ({ currentUrl, guest }) => {
     }
 
     setInviteSuccess(true);
+  };
+
+  const onWishesSubmit = async (data) => {
+    const res = await fetch("/api/create-wishes", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      console.error("Request failed: ", res);
+      return;
+    }
+
+    setWishesSuccess(true);
   };
 
   const photos = [
@@ -300,6 +322,11 @@ const ShowInvite = ({ currentUrl, guest }) => {
       href: "#showtime",
       value: "showtime",
       text: headersText.showtime,
+    },
+    {
+      href: "#wishes",
+      value: "wishes",
+      text: headersText.wishes,
     },
   ];
 
@@ -585,14 +612,14 @@ const ShowInvite = ({ currentUrl, guest }) => {
                   </div>
                   <div className="form-group col-md-12">
                     <input
-                      id="invite_email"
-                      type="email"
+                      id="invite_phone"
+                      type="text"
                       className="form-control"
-                      placeholder={invitationForm.input.email.placeholder}
-                      {...registerInvite("email", { required: true })}
+                      placeholder={invitationForm.input.phone.placeholder}
+                      {...registerInvite("phone", { required: true })}
                     />
-                    {inviteErrors.email && (
-                      <small id="email_help" className="form-text text-error">
+                    {inviteErrors.phone && (
+                      <small id="phone_help" className="form-text text-error">
                         {invitationForm.input.helpText}
                       </small>
                     )}
@@ -720,7 +747,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                   </div>
                 </form>
               ) : (
-                <div className="banner">{invitationForm.successMessage}</div>
+                <div className="success-message">{invitationForm.successMessage}</div>
               )}
             </div>
           </div>
@@ -749,6 +776,67 @@ const ShowInvite = ({ currentUrl, guest }) => {
               renderImage={imageRenderer}
             />
           </PhotoProvider>
+        </div>
+      </section>
+
+      <section id="wishes" className="full-height coming_soon_area">
+        <div className={`wishes ${locale} container`}>
+          <div className="banner">
+            <img
+              className={"element"}
+              src={`assets/images/wishes/${locale}/banner-text.png`}
+              alt="shape"
+            />
+          </div>
+          <div className="form-section col-12">
+            <div className={`wishes-form ${locale} row align-items-center`}>
+              {!wishesSuccess ? (
+                <form onSubmit={handleSubmitWishes(onWishesSubmit)}>
+                  <div className="form-group col-md-12">
+                    <input
+                      id="wishes_name"
+                      type="text"
+                      className="form-control"
+                      placeholder={wishesForm.input.name.placeholder}
+                      {...registerWishes("name", { required: true })}
+                    />
+                    {wishesErrors.name && (
+                      <small id="name_help" className="form-text text-error">
+                        {wishesForm.input.helpText}
+                      </small>
+                    )}
+                  </div>
+                  <div className="form-group col-md-12">
+                    <textarea
+                      id="wishes_message"
+                      rows="2"
+                      className="form-control"
+                      placeholder={wishesForm.input.message.placeholder}
+                      {...registerWishes("message", { required: true })}
+                    />
+                    {wishesErrors.message && (
+                      <small id="message_help" className="form-text text-error">
+                        {wishesForm.input.helpText}
+                      </small>
+                    )}
+                  </div>
+                  <div className="form-button col-md-12">
+                    <button type="submit" className="btn">
+                      {wishesForm.formButton.text}
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="success-message">{wishesForm.successMessage}</div>
+              )}
+            </div>
+          </div>
+          <div className="wishes_left_flower">
+            <img src="assets/images/wishes/left-flower.png" alt="shape" />
+          </div>
+          <div className="wishes_right_flower">
+            <img src="assets/images/wishes/right-flower.png" alt="shape" />
+          </div>
         </div>
       </section>
 

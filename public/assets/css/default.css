@@ -28,7 +28,7 @@ html {
   padding: 15px !important;
   height: 65px;
   background-color: #fdd3cf;
-  font-family: Marriage;
+  font-family: Wedding;
 }
 
 .navbar.vn {
@@ -275,6 +275,37 @@ section.full-height {
   width: 60vw;
 }
 
+.form-control {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #d9d9d9;
+  color: #fff;
+  border-radius: 0;
+  font-size: 18px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  line-height: 1;
+  height: calc(1.5em + .75rem + 10px);
+}
+
+.form-control:focus {
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+}
+
+.form-control::placeholder {
+  color: #fff
+}
+
+.form-group {
+  min-height: 45px;
+}
+
+.form-group > .form-text.text-error {
+  color: red;
+}
+
 .invitation .invitation-form {
   justify-content: center;
 }
@@ -333,29 +364,6 @@ section.full-height {
   /* border: 1px solid #c8a898 */
 }
 
-.form-control {
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid #d9d9d9;
-  color: #fff;
-  border-radius: 0;
-  font-size: 18px;
-  padding-left: 0px;
-  padding-bottom: 0px;
-  line-height: 1;
-  height: calc(1.5em + .75rem + 10px);
-}
-
-.form-control:focus {
-  background: transparent;
-  outline: none;
-  box-shadow: none;
-}
-
-.form-control::placeholder {
-  color: #fff
-}
-
 .invitation-form > form {
   width: 100%;
   font-family: Wedding;
@@ -396,14 +404,6 @@ section.full-height {
   font-family: Vietnamese;
 }
 
-.form-group {
-  min-height: 45px;
-}
-
-.form-group > .form-text.text-error {
-  color: red;
-}
-
 .invitation-form > form > .form-button {
   margin-top: 30px;
   text-align: center;
@@ -413,6 +413,15 @@ section.full-height {
   border: none;
   background: #c8a898;
   color: #fff;
+}
+
+.invitation-form .success-message {
+  font-family: Wedding;
+}
+
+.invitation-form.vn .success-message {
+  font-size: 20px;
+  font-family: Vietnamese;
 }
 
 .invitation_left_flower {
@@ -510,4 +519,127 @@ section.full-height {
 
 .footer .footer-col .heading {
   padding-bottom: 10px;
+}
+
+.wishes .wishes-form {
+  justify-content: center;
+}
+
+.wishes {
+  max-width: 950px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.wishes.container {
+  position: relative;
+  background: #f8f3f0;
+  padding: 20px;
+}
+
+.wishes .banner {
+  margin: 30px 0 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.wishes .banner > img {
+  max-width: 400px;
+}
+
+.wishes.vn .banner > img {
+  max-width: 400px;
+}
+
+.wishes > .form-section {
+  border: 1px solid transparent;
+  border-radius: 0;
+  padding: 0 180px 50px;
+  position: relative;
+  z-index: 11;
+}
+
+.wishes > .form-section:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -11;
+  content: "";
+  /* border: 1px solid #c8a898 */
+}
+
+.wishes-form > form {
+  width: 100%;
+  font-family: Wedding;
+}
+
+.wishes-form.vn > form {
+  font-family: Vietnamese;
+}
+
+.wishes .wishes-form .form-control {
+  border-bottom: 1px solid silver;
+  color: #464646;
+}
+
+.wishes .wishes-form.vn .form-control {
+  color: #464646;
+  font-size: 18px;
+}
+
+.wishes .wishes-form .form-control::placeholder {
+  color: #464646;
+  padding-left: 5px;
+}
+
+.wishes .wishes-form.vn .form-control::placeholder {
+  font-size: 20px;
+}
+
+.wishes .wishes-form select.form-control,
+.wishes .wishes-form select.form-control option {
+  color: #464646;
+  font-family: Wedding;
+}
+
+.wishes .wishes-form.vn select.form-control,
+.wishes .wishes-form.vn select.form-control option {
+  font-size: 20px;
+  font-family: Vietnamese;
+}
+
+.wishes-form > form > .form-button {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.wishes-form .form-button > button {
+  border: none;
+  background: #c8a898;
+  color: #fff;
+}
+
+.wishes-form .success-message {
+  font-family: Wedding;
+}
+
+.wishes-form.vn .success-message {
+  font-size: 20px;
+  font-family: Vietnamese;
+}
+
+.wishes_left_flower {
+  width: 150px;
+  left: -61px;
+  top: -75px;
+  position: absolute;
+}
+
+.wishes_right_flower {
+  width: 150px;
+  right: -25px;
+  bottom: -20px;
+  position: absolute;
 }

@@ -30,7 +30,7 @@ export async function saveInvitation(formInput) {
       values: [
         [
           formInput.name,
-          formInput.email,
+          formInput.phone,
           formInput.connectionFrom,
           formInput.adultGuests,
           formInput.kidGuests,
@@ -42,4 +42,24 @@ export async function saveInvitation(formInput) {
   })
 
   console.log("Invitation save res: ", res)
+}
+
+export async function saveWishes(formInput) {
+  const sheets = await getSheetClient();
+  const res = await sheets.spreadsheets.values.append({
+    spreadsheetId: process.env.GOOGLE_SHEET_ID,
+    range: `${process.env.WORKSHEET_WISHES}!${process.env.WORKSHEET_WISHES_COLUMNS}`,
+    valueInputOption: 'USER_ENTERED',
+    insertDataOption: 'INSERT_ROWS',
+    requestBody: {
+      values: [
+        [
+          formInput.name,
+          formInput.message,
+        ],
+      ]
+    }
+  })
+
+  console.log("Wishes save res: ", res)
 }

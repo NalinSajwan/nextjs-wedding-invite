@@ -50,8 +50,8 @@ const baseConfig = {
       name: {
         placeholder: "your good name",
       },
-      email: {
-        placeholder: "your email",
+      phone: {
+        placeholder: "your phone",
       },
       connectionFrom: {
         placeholder: "how did we meet?",
@@ -99,12 +99,28 @@ const baseConfig = {
     formAlert: "",
     successMessage: `Okei dokei! See you there with lots of love 🫶🏻`
   },
+  wishesForm: {
+    input: {
+      helpText: "Missed me, Really?",
+      name: {
+        placeholder: "your name",
+      },
+      message: {
+        placeholder: "share your heartfelt wishes with us…",
+      },
+    },
+    formButton: {
+      text: "Send us now"
+    },
+    successMessage: `Thanks for the wishes! lots of love 🫶🏻`
+  },
   headers: {
     home: "Home",
     ourStory: "Our Story",
     ceremony: "Ceremony",
     rsvp: "RSVP",
-    showtime: "Showtime"
+    showtime: "Showtime",
+    wishes: "Send Wishes"
   }
 };
 
@@ -136,7 +152,7 @@ const lang = {
         name: {
           placeholder: "Tên của bạn",
         },
-        email: {
+        phone: {
           placeholder: "Số điện thoại của bạn",
         },
         connectionFrom: {
@@ -185,12 +201,28 @@ const lang = {
       formAlert: "Mình cố gắng điền vào đây trước ngày 20/9/2024 (nếu có thể tham dự) để gia đình chuẩn bị chu đáo tươm tất nhé ạ! Mãi yêu 🧡",
       successMessage: `Ok luôn! Yêu thương hẹn gặp lại nhó 🫶🏻`
     },
+    wishesForm: {
+      input: {
+        helpText: "Thiếu rồi bạn ơi, điền nốt nè!",
+        name: {
+          placeholder: "Tên của bạn",
+        },
+        message: {
+          placeholder: "Viết lời chúc cho tụi mình vào đây nè…",
+        },
+      },
+      formButton: {
+        text: "Gửi lời chúc nè"
+      },
+      successMessage: `Cảm ơn những lời chúc! nhiều tình yêu 🫶🏻`
+    },
     headers: {
       home: "Trang chủ",
       ourStory: "Câu chuyện",
       ceremony: "Sự kiện",
       rsvp: "Lời hồi âm",
-      showtime: "Khoảnh khắc"
+      showtime: "Khoảnh khắc",
+      wishes: "Gửi lời chúc"
     }
   },
 };
