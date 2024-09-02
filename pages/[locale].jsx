@@ -9,6 +9,7 @@ import Gallery from "react-photo-gallery";
 import Countdown from "react-countdown";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { useParams } from "next/navigation";
 
 const STORY_TEXT_CUSTOM = {
   en: {
@@ -40,7 +41,10 @@ const translateConfig = (appConfig, locale) => {
 };
 
 const ShowInvite = ({ currentUrl, guest }) => {
-  const t = useTranslation(guest.locale);
+  const params = useParams();
+  const locale = params.locale;
+
+  const t = useTranslation(locale);
   const [show, toggleBar] = useState(false);
   const [inviteSuccess, setInviteSuccess] = useState(false);
 
@@ -71,7 +75,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
     weddingTime,
     invitationForm,
     calendarInfo,
-  } = translateConfig(appConfig, guest.locale);
+  } = translateConfig(appConfig, locale);
   const { brideName, groomName, coupleNameFormat } = coupleInfo;
 
   const coupleNameStr =
@@ -129,7 +133,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
     return {
       image: `story_element_${i + 1}_image`,
       text: `story_element_${i + 1}_text`,
-      style: STORY_TEXT_CUSTOM[guest.locale][i],
+      style: STORY_TEXT_CUSTOM[locale]?.[i],
       customClass,
     };
   });
@@ -320,7 +324,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
         logo={resolvePath(ogTags.logo)}
         author={resolvePath("/")}
       />
-      <nav className={`navbar ${guest.locale} navbar-expand-lg navbar-light`}>
+      <nav className={`navbar ${locale} navbar-expand-lg navbar-light`}>
         <button
           className="navbar-toggler"
           data-toggle="collapse"
@@ -414,14 +418,12 @@ const ShowInvite = ({ currentUrl, guest }) => {
           />
           <div className="story-banner row align-items-center">
             <img
-              className={`element ${guest.locale}`}
-              src={`/assets/images/our_story/${guest.locale}/top-banner.png`}
+              className={`element ${locale}`}
+              src={`/assets/images/our_story/${locale}/top-banner.png`}
               alt="logo"
             />
           </div>
-          <div
-            className={`story-content ${guest.locale} row align-items-center`}
-          >
+          <div className={`story-content ${locale} row align-items-center`}>
             {storyContent.map((content, index) => (
               <div
                 className={`content col-${
@@ -438,17 +440,17 @@ const ShowInvite = ({ currentUrl, guest }) => {
                 <img
                   className={`row text`}
                   style={content.style}
-                  src={`/assets/images/our_story/${guest.locale}/${content.text}.png`}
+                  src={`/assets/images/our_story/${locale}/${content.text}.png`}
                   alt="logo"
                 />
               </div>
             ))}
           </div>
-          <div className={`dress-code ${guest.locale} row align-items-center`}>
+          <div className={`dress-code ${locale} row align-items-center`}>
             <div className="heading row container">
               <img
                 className="align-self-center"
-                src={`/assets/images/our_story/${guest.locale}/dress-code-text.png`}
+                src={`/assets/images/our_story/${locale}/dress-code-text.png`}
                 alt="logo"
               />
             </div>
@@ -498,17 +500,17 @@ const ShowInvite = ({ currentUrl, guest }) => {
           />
           <div className="banner row align-items-center">
             <img
-              className={`element ${guest.locale}`}
-              src={`/assets/images/ceremony/${guest.locale}/top-banner.png`}
+              className={`element ${locale}`}
+              src={`/assets/images/ceremony/${locale}/top-banner.png`}
               alt="logo"
             />
           </div>
-          <div className={`content ${guest.locale} row align-items-center`}>
+          <div className={`content ${locale} row align-items-center`}>
             <div className={`content col-6 align-self-center`}>
               <div className="image-banner row container">
                 <img
                   className="element"
-                  src={`/assets/images/ceremony/${guest.locale}/ceremony-event.png`}
+                  src={`/assets/images/ceremony/${locale}/ceremony-event.png`}
                   alt="logo"
                 />
               </div>
@@ -522,7 +524,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
               <div className="image-banner row container">
                 <img
                   className="element"
-                  src={`/assets/images/ceremony/${guest.locale}/ceremony-hotel.png`}
+                  src={`/assets/images/ceremony/${locale}/ceremony-hotel.png`}
                   alt="logo"
                 />
               </div>
@@ -533,17 +535,17 @@ const ShowInvite = ({ currentUrl, guest }) => {
               </div>
             </div>
           </div>
-          <div className={`timeline ${guest.locale} row align-items-center`}>
+          <div className={`timeline ${locale} row align-items-center`}>
             <div className="heading row container">
               <img
                 className="align-self-center"
-                src={`/assets/images/ceremony/${guest.locale}/ceremony-timeline-text.png`}
+                src={`/assets/images/ceremony/${locale}/ceremony-timeline-text.png`}
                 alt="logo"
               />
             </div>
             <div className="main row container align-self-center">
               <img
-                src={`/assets/images/ceremony/${guest.locale}/ceremony-timeline.png`}
+                src={`/assets/images/ceremony/${locale}/ceremony-timeline.png`}
                 alt="logo"
               />
             </div>
@@ -552,23 +554,19 @@ const ShowInvite = ({ currentUrl, guest }) => {
       </section>
 
       <section id="invitation" className="full-height coming_soon_area">
-        <div className={`invitation ${guest.locale} container`}>
+        <div className={`invitation ${locale} container`}>
           <div className="form-section col-12">
             <div className="banner">
               <img
                 className={"element"}
-                src={`assets/images/invitation/${guest.locale}/banner-text.png`}
+                src={`assets/images/invitation/${locale}/banner-text.png`}
                 alt="shape"
               />
               {invitationForm.formAlert && (
-                <h4 className="date-alert">
-                  {invitationForm.formAlert}
-                </h4>
+                <h4 className="date-alert">{invitationForm.formAlert}</h4>
               )}
             </div>
-            <div
-              className={`invitation-form ${guest.locale} row align-items-center`}
-            >
+            <div className={`invitation-form ${locale} row align-items-center`}>
               {!inviteSuccess ? (
                 <form onSubmit={handleSubmitInvite(onInviteSubmit)}>
                   <div className="form-group col-md-12">
@@ -736,11 +734,11 @@ const ShowInvite = ({ currentUrl, guest }) => {
       </section>
 
       <section id="showtime" className="full-height contact_area">
-        <div className={`showtime ${guest.locale} container`}>
+        <div className={`showtime ${locale} container`}>
           <div className="banner">
             <img
               className={"element"}
-              src={`assets/images/showtime/${guest.locale}/banner-text.png`}
+              src={`assets/images/showtime/${locale}/banner-text.png`}
               alt="shape"
             />
           </div>
@@ -793,8 +791,7 @@ ShowInvite.getInitialProps = (ctx) => {
       guestId: "",
       name: "",
       greeting: "",
-      locale: "vn",
-      // locale: localeParams,
+      locale: localeParams,
     },
   };
 
