@@ -560,6 +560,11 @@ const ShowInvite = ({ currentUrl, guest }) => {
                 src={`assets/images/invitation/${guest.locale}/banner-text.png`}
                 alt="shape"
               />
+              {invitationForm.formAlert && (
+                <h4 className="date-alert">
+                  {invitationForm.formAlert}
+                </h4>
+              )}
             </div>
             <div
               className={`invitation-form ${guest.locale} row align-items-center`}
@@ -788,8 +793,8 @@ ShowInvite.getInitialProps = (ctx) => {
       guestId: "",
       name: "",
       greeting: "",
-      // locale: "vn",
-      locale: localeParams,
+      locale: "vn",
+      // locale: localeParams,
     },
   };
 

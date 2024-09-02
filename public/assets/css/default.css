@@ -6,6 +6,11 @@
 }
 
 @font-face {
+  font-family: Invitation;
+  src: url(../fonts/Invitation.ttf);
+}
+
+@font-face {
   font-family: Vietnamese;
   src: url(../fonts/Vietnamese.ttf);
 }
@@ -300,12 +305,21 @@ section.full-height {
   max-width: 260px;
 }
 
+.invitation .date-alert {
+  margin: 20px 0px;
+  font-weight: 300;
+}
+
+.invitation.vn .date-alert {
+  font-family: Vietnamese;
+}
+
 .invitation > .form-section {
   border: 1px solid transparent;
   border-radius: 0;
   padding: 0 180px 50px;
   position: relative;
-  z-index: 11
+  z-index: 11;
 }
 
 .invitation > .form-section:before {
@@ -326,13 +340,16 @@ section.full-height {
   color: #fff;
   border-radius: 0;
   font-size: 18px;
-  padding-left: 0
+  padding-left: 0px;
+  padding-bottom: 0px;
+  line-height: 1;
+  height: calc(1.5em + .75rem + 10px);
 }
 
 .form-control:focus {
   background: transparent;
   outline: none;
-  box-shadow: none
+  box-shadow: none;
 }
 
 .form-control::placeholder {
@@ -341,34 +358,46 @@ section.full-height {
 
 .invitation-form > form {
   width: 100%;
+  font-family: Wedding;
+}
+
+.invitation-form.vn > form {
+  font-family: Vietnamese;
 }
 
 .invitation .invitation-form .form-control {
   border-bottom: 1px solid silver;
-  color: #464646
+  color: #464646;
+}
+
+.invitation .invitation-form.vn .form-control {
+  color: #464646;
+  font-size: 18px;
 }
 
 .invitation .invitation-form .form-control::placeholder {
-  color: #464646
+  color: #464646;
+  padding-left: 5px;
 }
 
-.invitation .invitation-form .radio-buttons [type=radio]:checked+label,
-.invitation .invitation-form .radio-buttons [type=radio]:not(:checked)+label,
-.invitation .invitation-form .radio-buttons p,
+.invitation .invitation-form.vn .form-control::placeholder {
+  font-size: 20px;
+}
+
 .invitation .invitation-form select.form-control,
 .invitation .invitation-form select.form-control option {
-  color: #464646
+  color: #464646;
+  font-family: Wedding;
 }
 
-.invitation .invitation-form .radio-buttons [type=radio]:checked+label:before,
-.invitation .invitation-form .radio-buttons [type=radio]:not(:checked)+label:before {
-  height: 18px;
-  border: 1px solid #c8a898
+.invitation .invitation-form.vn select.form-control,
+.invitation .invitation-form.vn select.form-control option {
+  font-size: 20px;
+  font-family: Vietnamese;
 }
 
-.invitation .invitation-form .radio-buttons [type=radio]:checked+label:after,
-.invitation .invitation-form .radio-buttons [type=radio]:not(:checked)+label:after {
-  background: #c8a898
+.form-group {
+  min-height: 45px;
 }
 
 .form-group > .form-text.text-error {

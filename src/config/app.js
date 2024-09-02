@@ -48,13 +48,13 @@ const baseConfig = {
     input: {
       helpText: "Missed me, Really?",
       name: {
-        placeholder: "Your good name",
+        placeholder: "your good name",
       },
       email: {
-        placeholder: "Your email",
+        placeholder: "your email",
       },
       connectionFrom: {
-        placeholder: "How did we meet?",
+        placeholder: "how did we meet?",
         options: [
           { value: "Nalin's family", text: "Nalin's family" },
           { value: "Cindee's family", text: "Cindee's family" },
@@ -72,13 +72,13 @@ const baseConfig = {
         ],
       },
       adultGuests: {
-        placeholder: "How many adults joining?",
+        placeholder: "how many adults joining?",
       },
       kidGuests: {
-        placeholder: "Are you coming with kids?",
+        placeholder: "are you coming with kids?",
       },
       location: {
-        placeholder: "Where Will You Be Attending?",
+        placeholder: "where will You Be Attending?",
         options: [
           { value: "Dalat", text: "Dalat (Vietnam)" },
           { value: "Faridabad", text: "Faridabad (India)" },
@@ -86,7 +86,7 @@ const baseConfig = {
         ],
       },
       mealPreference: {
-        placeholder: "Meal Preferences?",
+        placeholder: "meal preferences?",
         options: [
           { value: "Non-Veg", text: "Non Veg" },
           { value: "Veg", text: "Veg" },
@@ -96,6 +96,7 @@ const baseConfig = {
     formButton: {
       text: "Count me in!",
     },
+    formAlert: "",
     successMessage: `Okei dokei! See you there with lots of love 🫶🏻`
   },
   headers: {
@@ -181,6 +182,7 @@ const lang = {
       formButton: {
         text: "Ấn vào đây tức là sẽ đi ạ!",
       },
+      formAlert: "Mình cố gắng điền vào đây trước ngày 20/9/2024 (nếu có thể tham dự) để gia đình chuẩn bị chu đáo tươm tất nhé ạ! Mãi yêu 🧡",
       successMessage: `Ok luôn! Yêu thương hẹn gặp lại nhó 🫶🏻`
     },
     headers: {
