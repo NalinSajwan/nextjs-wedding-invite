@@ -7,6 +7,10 @@ const baseConfig = {
   weddingDate: "Oct 19, 2024",
   showBuiltWithInfo: true,
   showQrCode: false,
+  weddingClockText: {
+    days: "days",
+    hours: "hours"
+  },
   calendarInfo: {
     timeStartISO: new Date(1729242000000).toISOString(), // Fri Oct 18, 2024 04:00pm Asia/Ho Chi Minh (+07)
     timeEndISO: new Date(1729400400000).toISOString(), // Sun Oct 20, 2024 12:00pm Asia/Ho Chi Minh (+07)
@@ -48,13 +52,13 @@ const baseConfig = {
     input: {
       helpText: "Missed me, Really?",
       name: {
-        placeholder: "your good name",
+        placeholder: "Your name",
       },
       phone: {
-        placeholder: "your phone",
+        placeholder: "Your phone",
       },
       connectionFrom: {
-        placeholder: "how did we meet?",
+        placeholder: "How did we meet?",
         options: [
           { value: "Nalin's family", text: "Nalin's family" },
           { value: "Cindee's family", text: "Cindee's family" },
@@ -72,13 +76,13 @@ const baseConfig = {
         ],
       },
       adultGuests: {
-        placeholder: "how many adults joining?",
+        placeholder: "How many adults joining?",
       },
       kidGuests: {
-        placeholder: "are you coming with kids?",
+        placeholder: "Are you coming with kids?",
       },
       location: {
-        placeholder: "where will You Be Attending?",
+        placeholder: "Where will you be attending?",
         options: [
           { value: "Dalat", text: "Dalat (Vietnam)" },
           { value: "Faridabad", text: "Faridabad (India)" },
@@ -86,7 +90,7 @@ const baseConfig = {
         ],
       },
       mealPreference: {
-        placeholder: "meal preferences?",
+        placeholder: "Meal preferences?",
         options: [
           { value: "Non-Veg", text: "Non Veg" },
           { value: "Veg", text: "Veg" },
@@ -103,14 +107,14 @@ const baseConfig = {
     input: {
       helpText: "Missed me, Really?",
       name: {
-        placeholder: "your name",
+        placeholder: "Your name",
       },
       message: {
-        placeholder: "share your heartfelt wishes with us…",
+        placeholder: "Share your heartfelt wishes with us…",
       },
     },
     formButton: {
-      text: "Send us now"
+      text: "Send now"
     },
     successMessage: `Thanks for the wishes! lots of love 🫶🏻`
   },
@@ -128,6 +132,10 @@ const lang = {
   vn: {
     weddingDay: "Thứ bảy",
     weddingDate: "19 tháng 10 2024",
+    weddingClockText: {
+      days: "ngày",
+      hours: "giờ"
+    },
     venue: {
       ...baseConfig.venue,
       addressLine1: "A26 đường Nguyễn Hữu Cảnh",

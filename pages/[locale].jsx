@@ -78,6 +78,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
     headers: headersText,
     weddingDay,
     weddingDate,
+    weddingClockText,
     weddingTimestamp,
     weddingTime,
     invitationForm,
@@ -255,15 +256,19 @@ const ShowInvite = ({ currentUrl, guest }) => {
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     return (
       <span>
-        <div className="countdownWrapper">
+        <div className={`countdownWrapper ${locale}`}>
           <div className="countdownSection">
             <div className="countWrapper count-days">
               <div className="count">{days}</div>
-              <div className="unit">days</div>
+              <div className="unit">
+                {weddingClockText.days}
+              </div>
             </div>
             <div className="countWrapper count-hours">
               <div className="count">{hours}</div>
-              <div className="unit">hours</div>
+              <div className="unit">
+                {weddingClockText.hours}
+              </div>
             </div>
           </div>
         </div>
@@ -809,7 +814,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                   <div className="form-group col-md-12">
                     <textarea
                       id="wishes_message"
-                      rows="2"
+                      rows="6"
                       className="form-control"
                       placeholder={wishesForm.input.message.placeholder}
                       {...registerWishes("message", { required: true })}
