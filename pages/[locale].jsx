@@ -42,7 +42,7 @@ const translateConfig = (appConfig, locale) => {
 
 const ShowInvite = ({ currentUrl, guest }) => {
   const params = useParams();
-  const locale = params.locale;
+  const [locale, setLocale] = useState(params.locale);
 
   const t = useTranslation(locale);
   const [show, toggleBar] = useState(false);
@@ -381,6 +381,16 @@ const ShowInvite = ({ currentUrl, guest }) => {
             ))}
           </div>
         </div>
+        <select
+          className="language-selector"
+          onChange={(event) => {
+            setLocale(event.target.value);
+          }}
+          value={locale}
+        >
+          <option value="en">English</option>
+          <option value="vn">Tiếng Việt</option>
+        </select>
       </nav>
 
       <section id="home" className="header_area">

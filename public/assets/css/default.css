@@ -40,6 +40,17 @@ html {
   margin-left: 25px;
 }
 
+.navbar .language-selector {
+  color: rgba(0, 0, 0, .5);
+  position: fixed;
+  right: 30px;
+  top: 15px;
+  width: 95px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
 section {
   min-height: 650px;
   height: calc(100vh - 65px);
@@ -273,6 +284,10 @@ section.full-height {
   justify-content: center;
   font-family: Wedding;
   font-size: 24px;
+}
+
+.ceremony .content.vn .map {
+  font-family: Vietnamese;
 }
 
 .ceremony > .content > .content {
@@ -717,7 +732,7 @@ section.full-height {
 
   .home .countWrapper.count-days,
   .home .countWrapper.count-hours {
-    top: 40%;
+    top: 35%;
   }
 
   .home .countdownWrapper .countdownSection .countWrapper .count {
