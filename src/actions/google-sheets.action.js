@@ -2,14 +2,18 @@
 import { google } from "googleapis";
 
 async function getSheetClient () {
+  const credential = JSON.parse(
+    Buffer.from(process.env.GOOGLE_SERVICE_KEY, "base64").toString()
+  );
+
   const glAuth = await google.auth.getClient({
-    projectId: process.env.GOOGLE_PROJECT_ID,
+    projectId: credential.project_id,
     credentials: {
       type: "service_account",
-      project_id: process.env.GOOGLE_PROJECT_ID,
-      private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,
-      private_key: process.env.GOOGLE_PRIVATE_KEY,
-      client_email: process.env.GOOGLE_CLIENT_EMAIL,
+      project_id: credential.project_id,
+      private_key_id: credential.private_key_id,
+      private_key: credential.private_key,
+      client_email: credential.client_email,
       universe_domain: "googleapis.com",
     },
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
@@ -41,7 +45,7 @@ export async function saveInvitation(formInput) {
     }
   })
 
-  console.log("Invitation save res: ", res)
+  console.info(`[invitation] ${formInput.name}; save res: `, res.status)
 }
 
 export async function saveWishes(formInput) {
@@ -61,5 +65,5 @@ export async function saveWishes(formInput) {
     }
   })
 
-  console.log("Wishes save res: ", res)
+  console.info(`[wishes] ${formInput.name}; save res: `, res.status)
 }
