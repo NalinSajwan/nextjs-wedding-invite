@@ -374,6 +374,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                 className="nav-item nav-link"
                 value={header.value}
                 href={header.href}
+                onClick={toggleNavBar}
               >
                 {header.text}
               </a>
@@ -407,11 +408,20 @@ const ShowInvite = ({ currentUrl, guest }) => {
                   src={"/assets/images/home/element-flower-bottom-right.png"}
                   alt="logo"
                 />
-                <img
-                  className="center main-text"
-                  src={"/assets/images/home/element-banner-landing.png"}
-                  alt="logo"
-                />
+                <div className="center main-text">
+                  <img
+                    src={"/assets/images/home/element-banner-landing-1.png"}
+                    alt="logo"
+                  />
+                  <img
+                    src={"/assets/images/home/element-banner-landing-2.png"}
+                    alt="logo"
+                  />
+                  <img
+                    src={"/assets/images/home/element-banner-landing-3.png"}
+                    alt="logo"
+                  />
+                </div>
                 <img
                   className="center main-gif"
                   src={"/assets/images/home/nalin-ha-photo.gif"}
@@ -458,9 +468,9 @@ const ShowInvite = ({ currentUrl, guest }) => {
           <div className={`story-content ${locale} row align-items-center`}>
             {storyContent.map((content, index) => (
               <div
-                className={`content col-${
+                className={`content col-sm-${
                   index > 2 ? "6" : "4"
-                } align-self-center ${content.customClass}`}
+                } col-xs-6 align-self-center ${content.customClass}`}
               >
                 <div className="image-container container">
                   <img
@@ -531,36 +541,43 @@ const ShowInvite = ({ currentUrl, guest }) => {
             alt="logo"
           />
           <div className="banner row align-items-center">
-            <img
-              className={`element ${locale}`}
-              src={`/assets/images/ceremony/${locale}/top-banner.png`}
-              alt="logo"
-            />
+            <div className={`element row ${locale}`}>
+              <img
+                className={"col-xs-12 col-sm-6"}
+                src={`/assets/images/ceremony/${locale}/top-banner-1.png`}
+                alt="logo"
+              />
+              <img
+                className={"col-xs-12 col-sm-6"}
+                src={`/assets/images/ceremony/${locale}/top-banner-2.png`}
+                alt="logo"
+              />
+            </div>
           </div>
           <div className={`content ${locale} row align-items-center`}>
-            <div className={`content col-6 align-self-center`}>
-              <div className="image-banner row container">
+            <div className={`content col-xs-12 col-sm-6 align-self-center`}>
+              <div className="image-banner row">
                 <img
                   className="element"
                   src={`/assets/images/ceremony/${locale}/ceremony-event.png`}
                   alt="logo"
                 />
               </div>
-              <div className="map row container">
+              <div className="map row">
                 <a href={venue.mapUrl} target="_blank" className="view-map">
                   {venue.mapText}
                 </a>
               </div>
             </div>
-            <div className={`content col-6 align-self-center`}>
-              <div className="image-banner row container">
+            <div className={`content col-xs-12 col-sm-6 align-self-center`}>
+              <div className="image-banner row">
                 <img
                   className="element"
                   src={`/assets/images/ceremony/${locale}/ceremony-hotel.png`}
                   alt="logo"
                 />
               </div>
-              <div className="map row container">
+              <div className="map row">
                 <a href={hotel.mapUrl} target="_blank" className="view-map">
                   {venue.mapText}
                 </a>
@@ -575,9 +592,15 @@ const ShowInvite = ({ currentUrl, guest }) => {
                 alt="logo"
               />
             </div>
-            <div className="main row container align-self-center">
+            <div className="main row container horizontal align-self-center">
               <img
                 src={`/assets/images/ceremony/${locale}/ceremony-timeline.png`}
+                alt="logo"
+              />
+            </div>
+            <div className="main row container vertical align-self-center">
+              <img
+                src={`/assets/images/ceremony/${locale}/ceremony-timeline-vertical.png`}
                 alt="logo"
               />
             </div>
