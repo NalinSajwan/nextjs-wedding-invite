@@ -100,7 +100,7 @@ const baseConfig = {
     formButton: {
       text: "Count me in!",
     },
-    formAlert: "",
+    formAlert: "Please let us know if you can attend our party before 20/09/2024 so that we can arrange your stays perfectly. Wish to see you around, very soon friends! 🧡",
     successMessage: `Okei dokei! See you there with lots of love 🫶🏻`
   },
   wishesForm: {

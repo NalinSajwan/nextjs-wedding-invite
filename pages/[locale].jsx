@@ -189,8 +189,8 @@ const ShowInvite = ({ currentUrl, guest }) => {
     },
     {
       src: `assets/images/pre_wedding_photos/IMG_02.JPG`,
-      width: 1.5,
-      height: 1,
+      width: 1,
+      height: 1.3,
     },
     {
       src: `assets/images/pre_wedding_photos/IMG_03.JPG`,
@@ -200,17 +200,17 @@ const ShowInvite = ({ currentUrl, guest }) => {
     {
       src: `assets/images/pre_wedding_photos/IMG_04.JPG`,
       width: 1,
-      height: 1.5,
+      height: 1.4,
     },
     {
       src: `assets/images/pre_wedding_photos/IMG_05.JPG`,
-      width: 1,
-      height: 1.5,
+      width: 1.5,
+      height: 1,
     },
     {
       src: `assets/images/pre_wedding_photos/IMG_06.JPG`,
-      width: 1.5,
-      height: 1,
+      width: 1,
+      height: 1.5,
     },
     {
       src: `assets/images/pre_wedding_photos/IMG_07.JPG`,
@@ -219,18 +219,18 @@ const ShowInvite = ({ currentUrl, guest }) => {
     },
     {
       src: `assets/images/pre_wedding_photos/IMG_08.JPG`,
+      width: 1,
+      height: 1.45,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_09.JPG`,
       width: 1.5,
       height: 1,
     },
     {
-      src: `assets/images/pre_wedding_photos/IMG_09.JPG`,
-      width: 1,
-      height: 1.5,
-    },
-    {
       src: `assets/images/pre_wedding_photos/IMG_10.JPG`,
       width: 1,
-      height: 1.4,
+      height: 1.5,
     },
     {
       src: `assets/images/pre_wedding_photos/IMG_11.JPG`,
@@ -239,13 +239,116 @@ const ShowInvite = ({ currentUrl, guest }) => {
     },
     {
       src: `assets/images/pre_wedding_photos/IMG_12.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_13.JPG`,
       width: 1,
-      height: 1.6,
+      height: 1.45,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_14.JPG`,
+      width: 1.5,
+      height: 1,
     },
     {
       src: `assets/images/pre_wedding_photos/IMG_15.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_16.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_17.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_18.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+  ];
+
+  const photosOld = [
+    {
+      src: `assets/images/pre_wedding_photos/IMG_01.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_02.JPG`,
+      width: 1,
+      height: 1.3,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_18.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_03.JPG`,
       width: 1,
       height: 1.4,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_04.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_14.JPG`,
+      width: 1,
+      height: 1.5,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_05.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_07.JPG`,
+      width: 1,
+      height: 1.45,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_06.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_08.JPG`,
+      width: 1,
+      height: 1.5,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_09.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_10.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_16.JPG`,
+      width: 1,
+      height: 1.45,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_11.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_12.JPG`,
+      width: 1.5,
+      height: 1,
     },
     {
       src: `assets/images/pre_wedding_photos/IMG_13.JPG`,
@@ -253,7 +356,12 @@ const ShowInvite = ({ currentUrl, guest }) => {
       height: 1,
     },
     {
-      src: `assets/images/pre_wedding_photos/IMG_14.JPG`,
+      src: `assets/images/pre_wedding_photos/IMG_15.JPG`,
+      width: 1.5,
+      height: 1,
+    },
+    {
+      src: `assets/images/pre_wedding_photos/IMG_17.JPG`,
       width: 1.5,
       height: 1,
     },
