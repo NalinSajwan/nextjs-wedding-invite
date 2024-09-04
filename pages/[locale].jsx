@@ -47,7 +47,9 @@ const ShowInvite = ({ currentUrl, guest }) => {
   const t = useTranslation(locale);
   const [show, toggleBar] = useState(false);
   const [inviteSuccess, setInviteSuccess] = useState(false);
+  const [inviteLoading, setInviteLoading] = useState(false);
   const [wishesSuccess, setWishesSuccess] = useState(false);
+  const [wishesLoading, setWishesLoading] = useState(false);
 
   const {
     register: registerInvite,
@@ -148,6 +150,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
   });
 
   const onInviteSubmit = async (data) => {
+    setInviteLoading(true);
     const res = await fetch("/api/create-invite", {
       method: "POST",
       body: JSON.stringify(data),
@@ -159,9 +162,11 @@ const ShowInvite = ({ currentUrl, guest }) => {
     }
 
     setInviteSuccess(true);
+    setInviteLoading(false);
   };
 
   const onWishesSubmit = async (data) => {
+    setWishesLoading(true);
     const res = await fetch("/api/create-wishes", {
       method: "POST",
       body: JSON.stringify(data),
@@ -173,6 +178,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
     }
 
     setWishesSuccess(true);
+    setWishesLoading(false);
   };
 
   const photos = [
@@ -627,7 +633,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                 src={`assets/images/invitation/${locale}/banner-text.png`}
                 alt="shape"
               />
-              {invitationForm.formAlert && (
+              {invitationForm.formAlert && !inviteSuccess && (
                 <h4 className="date-alert">{invitationForm.formAlert}</h4>
               )}
             </div>
@@ -779,7 +785,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                     )}
                   </div>
                   <div className="form-button col-md-12">
-                    <button type="submit" className="btn">
+                    <button type="submit" className="btn" disabled={inviteLoading}>
                       {invitationForm.formButton.text}
                     </button>
                   </div>
@@ -859,7 +865,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                     )}
                   </div>
                   <div className="form-button col-md-12">
-                    <button type="submit" className="btn">
+                    <button type="submit" className="btn" disabled={wishesLoading}>
                       {wishesForm.formButton.text}
                     </button>
                   </div>
