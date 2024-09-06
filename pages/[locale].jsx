@@ -757,7 +757,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                       {...registerInvite("name", { required: true })}
                     />
                     {inviteErrors.name && (
-                      <small id="name_help" className="form-text text-error">
+                      <small id="invite_name_help" className="form-text text-error">
                         {invitationForm.input.helpText}
                       </small>
                     )}
@@ -771,7 +771,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                       {...registerInvite("phone", { required: true })}
                     />
                     {inviteErrors.phone && (
-                      <small id="phone_help" className="form-text text-error">
+                      <small id="invite_phone_help" className="form-text text-error">
                         {invitationForm.input.helpText}
                       </small>
                     )}
@@ -793,7 +793,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                     </select>
                     {inviteErrors.connectionFrom && (
                       <small
-                        id="location_help"
+                        id="invite_connection_help"
                         className="form-text text-error"
                       >
                         {invitationForm.input.helpText}
@@ -820,7 +820,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                     </select>
                     {inviteErrors.adultGuests && (
                       <small
-                        id="location_help"
+                        id="invite_adults_help"
                         className="form-text text-error"
                       >
                         {invitationForm.input.helpText}
@@ -836,15 +836,24 @@ const ShowInvite = ({ currentUrl, guest }) => {
                         min: 0,
                       })}
                     >
-                      <option value={0}>
+                      <option value={-1}>
                         {invitationForm.input.kidGuests.placeholder}
                       </option>
+                      <option value={0}>00</option>
                       <option value={1}>01</option>
                       <option value={2}>02</option>
                       <option value={3}>03</option>
                       <option value={4}>04</option>
                       <option value={5}>05</option>
                     </select>
+                    {inviteErrors.kidGuests && (
+                      <small
+                        id="invite_kids_help"
+                        className="form-text text-error"
+                      >
+                        {invitationForm.input.helpText}
+                      </small>
+                    )}
                   </div>
                   <div className="form-group col-md-12">
                     <select
@@ -861,7 +870,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                     </select>
                     {inviteErrors.location && (
                       <small
-                        id="location_help"
+                        id="invite_location_help"
                         className="form-text text-error"
                       >
                         {invitationForm.input.helpText}
@@ -885,7 +894,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                     </select>
                     {inviteErrors.mealPreference && (
                       <small
-                        id="location_help"
+                        id="invite_meals_help"
                         className="form-text text-error"
                       >
                         {invitationForm.input.helpText}

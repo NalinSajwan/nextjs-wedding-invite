@@ -62,6 +62,7 @@ const baseConfig = {
         options: [
           { value: "Nalin's family", text: "Nalin's family" },
           { value: "Cindee's family", text: "Cindee's family" },
+          { value: "Nalin's friends", text: "Nalin's friends" },
           { value: "Primary school CVA", text: "Primary school CVA" },
           { value: "Secondary school NTT", text: "Secondary school NTT" },
           { value: "High school KL", text: "High school KL" },
@@ -71,6 +72,7 @@ const baseConfig = {
           { value: "Lille (France)", text: "Lille (France)" },
           { value: "NashTech", text: "NashTech" },
           { value: "AIA", text: "AIA" },
+          { value: "Oolio", text: "Oolio" },
           { value: "Melbourne (Australia)", text: "Melbourne (Australia)" },
           { value: "Some secret place (Cannot find in this list)", text: "Some secret place (Cannot find in this list)" },
         ],
@@ -168,6 +170,7 @@ const lang = {
           options: [
             { value: "Nalin's family", text: "Gia đình Nalin" },
             { value: "Cindee's family", text: "Gia đình Cindee" },
+            { value: "Nalin's fiends", text: "Bạn bè Nalin" },
             { value: "Primary school CVA", text: "Tiểu học CVA" },
             { value: "Secondary school NTT", text: "Cấp 2 NTT" },
             { value: "High school KL", text: "Cấp 3 KL" },
@@ -177,6 +180,7 @@ const lang = {
             { value: "Lille (France)", text: "Lille (Pháp)" },
             { value: "NashTech", text: "NashTech" },
             { value: "AIA", text: "AIA" },
+            { value: "Oolio", text: "Oolio" },
             { value: "Melbourne (Australia)", text: "Melbourne (Úc)" },
             { value: "Some secret place (Cannot find in this list)", text: "Đâu đó khác (Hem thấy trong danh sách này luôn)" },
           ],
