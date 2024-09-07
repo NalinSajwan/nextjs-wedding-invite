@@ -91,6 +91,13 @@ const baseConfig = {
           { value: "Melbourne", text: "Melbourne (AU)" },
         ],
       },
+      stay: {
+        placeholder: "Would you like us to arrange your stay?",
+        options: [
+          { value: "Yes", text: "Book hotel for us" },
+          { value: "No", text: "We will arrange ourselves" },
+        ],
+      },
       mealPreference: {
         placeholder: "Meal preferences?",
         options: [
@@ -197,6 +204,13 @@ const lang = {
             { value: "Dalat", text: "Đà Lạt (Việt Nam)" },
             { value: "Faridabad", text: "Faridabad (Ấn Độ)" },
             { value: "Melbourne", text: "Melbourne (Úc)" },
+          ],
+        },
+        stay: {
+          placeholder: "Bạn có muốn chúng mình thu xếp chỗ nghỉ ở Đà Lạt không?",
+          options: [
+            { value: "Yes", text: "Thu xếp chỗ ở cho mình" },
+            { value: "No", text: "Không cần đặt khách sạn cho mình" },
           ],
         },
         mealPreference: {

@@ -786,6 +786,31 @@ const ShowInvite = ({ currentUrl, guest }) => {
                   </div>
                   <div className="form-group col-md-12">
                     <select
+                      id="invite_stay"
+                      className="form-control"
+                      defaultValue={"Yes"}
+                      {...registerInvite("stay", { required: true })}
+                    >
+                      <option value="">
+                        {invitationForm.input.stay.placeholder}
+                      </option>
+                      {invitationForm.input.stay.options.map(
+                        (option) => (
+                          <option value={option.value}>{option.text}</option>
+                        )
+                      )}
+                    </select>
+                    {inviteErrors.stay && (
+                      <small
+                        id="invite_stay_help"
+                        className="form-text text-error"
+                      >
+                        {invitationForm.input.helpText}
+                      </small>
+                    )}
+                  </div>
+                  <div className="form-group col-md-12">
+                    <select
                       id="invite_meals"
                       className="form-control"
                       {...registerInvite("mealPreference", { required: true })}

@@ -39,6 +39,7 @@ export async function saveInvitation(formInput) {
           formInput.adultGuests,
           formInput.kidGuests,
           formInput.location,
+          formInput.stay,
           formInput.mealPreference,
         ],
       ]
