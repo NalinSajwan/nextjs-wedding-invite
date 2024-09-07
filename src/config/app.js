@@ -202,8 +202,8 @@ const lang = {
         mealPreference: {
           placeholder: "Bạn muốn ăn gì nhỉ?",
           options: [
-            { value: "Non-Veg", text: "Ăn chay" },
-            { value: "Veg", text: "Ăn mặn" },
+            { value: "Non-Veg", text: "Ăn mặn" },
+            { value: "Veg", text: "Ăn chay" },
           ],
         },
       },
