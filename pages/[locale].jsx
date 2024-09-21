@@ -584,35 +584,6 @@ const ShowInvite = ({ currentUrl, guest }) => {
                 </div>
               ))
             }
-
-            {/* <div className={`content col-xs-12 col-sm-6 align-self-center`}>
-              <div className="image-banner row">
-                <img
-                  className="element"
-                  src={`/assets/images/ceremony/${locale}/ceremony-event.png`}
-                  alt="logo"
-                />
-              </div>
-              <div className="map row">
-                <a href={venue.mapUrl} target="_blank" className="view-map">
-                  {venue.mapText}
-                </a>
-              </div>
-            </div>
-            <div className={`content col-xs-12 col-sm-6 align-self-center`}>
-              <div className="image-banner row">
-                <img
-                  className="element"
-                  src={`/assets/images/ceremony/${locale}/ceremony-hotel.png`}
-                  alt="logo"
-                />
-              </div>
-              <div className="map row">
-                <a href={hotel.mapUrl} target="_blank" className="view-map">
-                  {venue.mapText}
-                </a>
-              </div>
-            </div> */}
           </div>
           <div className={`timeline ${locale} row align-items-center`}>
             <div className="heading row container">
@@ -621,6 +592,9 @@ const ShowInvite = ({ currentUrl, guest }) => {
                 src={`/assets/images/ceremony/${locale}/ceremony-timeline-text.png`}
                 alt="logo"
               />
+            </div>
+            <div className="sub-heading row container">
+              <span>{ceremony.timelineSubheading}</span>
             </div>
             <div className="main row container horizontal align-self-center">
               <img

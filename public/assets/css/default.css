@@ -6,11 +6,6 @@
 }
 
 @font-face {
-  font-family: Ceremony;
-  src: url(../fonts/Ceremony.ttf);
-}
-
-@font-face {
   font-family: English;
   src: url(../fonts/English.ttf);
 }
@@ -18,6 +13,11 @@
 @font-face {
   font-family: Vietnamese;
   src: url(../fonts/Vietnamese.ttf);
+}
+
+@font-face {
+  font-family: VietnameseCursive;
+  src: url(../fonts/VietnameseCursive.ttf);
 }
 
 @font-face {
@@ -294,7 +294,7 @@ section.full-height {
 }
 
 .ceremony .content.vn {
-  font-family: Ceremony;
+  font-family: VietnameseCursive;
 }
 
 .ceremony .content .row {
@@ -348,12 +348,23 @@ section.full-height {
   justify-content: center;
 }
 
+.ceremony .timeline .sub-heading {
+  font-size: 1.1rem;
+  color: #816856;
+  justify-content: center;
+  font-family: Wedding;
+}
+
+.ceremony .timeline.vn .sub-heading {
+  font-family: VietnameseCursive;
+}
+
 .ceremony .timeline .heading > img {
   width: 200px;
 }
 
 .ceremony .timeline .main {
-  margin-top: -25px;
+  margin-top: 0px;
   justify-content: center;
 }
 

@@ -22,6 +22,7 @@ const baseConfig = {
   },
   ceremony: {
     mapText: "View on map",
+    timelineSubheading: "(Vietnam)",
     events: [
       {
         order: 1,
@@ -166,6 +167,7 @@ const lang = {
     },
     ceremony: {
       mapText: "Xem bản đồ",
+      timelineSubheading: "(Việt Nam)",
       events: [
         {
           order: 1,
@@ -199,7 +201,7 @@ const lang = {
           location: "Sector 11, Block B, Faridabad, Haryana 121006",
           mapUrl: "https://maps.app.goo.gl/XTM83naVfN9E5Zg17",
         }
-      ]
+      ],
     },
     invitationForm: {
       input: {
