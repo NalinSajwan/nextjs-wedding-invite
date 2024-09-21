@@ -20,23 +20,42 @@ const baseConfig = {
     groomName: "Nalin",
     coupleNameFormat: "BRIDE_FIRST",
   },
-  venue: {
-    name: "J'adore Homestay",
-    addressLine1: "A26 Nguyen Huu Canh Street",
-    addressLine2: "Ward 8",
-    city: "Da Lat",
-    country: "Vietman",
-    mapUrl: "https://maps.app.goo.gl/4R2cKoFt297ys2HK7",
+  ceremony: {
     mapText: "View on map",
-  },
-  hotel: {
-    name: "Sunset Hill Hotel",
-    addressLine1: "5/24 Nguyen Huu Canh Street",
-    addressLine2: "Ward 8",
-    city: "Da Lat",
-    country: "Vietman",
-    mapUrl: "https://maps.app.goo.gl/rwQeyWtFK6mpWsrg8",
-    mapText: "View on map",
+    events: [
+      {
+        order: 1,
+        type: "Place of Event",
+        details: "Australia - 02/10 (6pm)",
+        place: "Moon Dog World",
+        location: "32 Chifley Dr, Preston VIC 3072",
+        mapUrl: "https://maps.app.goo.gl/L19KVoBmvfd4Z8zq9"
+      },
+      {
+        order: 2,
+        type: "Hotel Location",
+        details: "Vietman - 18/10 (Check-in 2pm)",
+        place: "Sunset Hill Hotel",
+        location: "5/24 Nguyen Huu Canh Street - Ward 8 - Da Lat",
+        mapUrl: "https://maps.app.goo.gl/rwQeyWtFK6mpWsrg8",
+      },
+      {
+        order: 3,
+        type: "Place of Event",
+        details: "Vietman - 19/10 (4pm)",
+        place: "J'adore Homestay",
+        location: "A26 Nguyen Huu Canh Street - Ward 8 - Da Lat",
+        mapUrl: "https://maps.app.goo.gl/4R2cKoFt297ys2HK7",
+      },
+      {
+        order: 4,
+        type: "Place of Event",
+        details: "India - 26/10 (7pm)",
+        place: "Milan Vatika",
+        location: "Sector 11, Block B, Faridabad, Haryana 121006",
+        mapUrl: "https://maps.app.goo.gl/XTM83naVfN9E5Zg17",
+      }
+    ]
   },
   logo: {
     headerLogo: "/assets/images/ring-svg.png",
@@ -45,7 +64,7 @@ const baseConfig = {
   },
   ogTags: {
     logo: "/assets/images/aw-ring-logo.png",
-    siteName: "wedding.wzulfikar.com",
+    siteName: "hanalintravelthe.world",
     publishedTime: "2024-08-26",
   },
   invitationForm: {
@@ -145,23 +164,42 @@ const lang = {
       days: "ngày",
       hours: "giờ"
     },
-    venue: {
-      ...baseConfig.venue,
-      addressLine1: "A26 đường Nguyễn Hữu Cảnh",
-      addressLine2: "Phường 8",
-      city: "Đà Lạt",
-      country: "Việt Nam",
-      mapUrl: "https://maps.app.goo.gl/miR4hMaBzKLCTrHB6",
+    ceremony: {
       mapText: "Xem bản đồ",
-    },
-    hotel: {
-      ...baseConfig.venue,
-      addressLine1: "5/24 đường Nguyễn Hữu Cảnh",
-      addressLine2: "Phường 8",
-      city: "Đà Lạt",
-      country: "Việt Nam",
-      mapUrl: "https://maps.app.goo.gl/miR4hMaBzKLCTrHB6",
-      mapText: "Xem bản đồ",
+      events: [
+        {
+          order: 1,
+          type: "Địa điểm tiệc",
+          details: "Úc - 02/10 (6pm)",
+          place: "Moon Dog World",
+          location: "32 Chifley Dr, Preston VIC 3072",
+          mapUrl: "https://maps.app.goo.gl/L19KVoBmvfd4Z8zq9"
+        },
+        {
+          order: 2,
+          type: "Địa điểm khách sạn",
+          details: "Việt Nam - 18/10 (Check-in 2pm)",
+          place: "Sunset Hill Hotel",
+          location: "A26 đường Nguyễn Hữu Cảnh",
+          mapUrl: "https://maps.app.goo.gl/rwQeyWtFK6mpWsrg8",
+        },
+        {
+          order: 3,
+          type: "Địa điểm tiệc",
+          details: "Việt Nam - 19/10 (4pm)",
+          place: "J'adore Homestay",
+          location: "A26 Nguyen Huu Canh Street - Ward 8 - Da Lat",
+          mapUrl: "https://maps.app.goo.gl/4R2cKoFt297ys2HK7",
+        },
+        {
+          order: 4,
+          type: "Địa điểm tiệc",
+          details: "Ấn Độ - 26/10 (7pm)",
+          place: "Milan Vatika",
+          location: "Sector 11, Block B, Faridabad, Haryana 121006",
+          mapUrl: "https://maps.app.goo.gl/XTM83naVfN9E5Zg17",
+        }
+      ]
     },
     invitationForm: {
       input: {

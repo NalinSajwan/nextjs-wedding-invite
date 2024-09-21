@@ -2,7 +2,7 @@ import Head from "@src/components/Head";
 import resolvePath from "@src/utils/resolvePath";
 import appConfig from "@src/config/app";
 import { useTranslation, defaultLocale } from "@src/i18n";
-import format from "date-fns/format";
+// import format from "date-fns/format";
 import { useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import Gallery from "react-photo-gallery";
@@ -72,20 +72,17 @@ const ShowInvite = ({ currentUrl, guest }) => {
 
   // Initiate config variables
   const {
-    logo,
     ogTags,
     coupleInfo,
-    venue,
+    ceremony,
     hotel,
     headers: headersText,
     weddingDay,
     weddingDate,
     weddingClockText,
     weddingTimestamp,
-    weddingTime,
     invitationForm,
     wishesForm,
-    calendarInfo,
   } = translateConfig(appConfig, locale);
   const { brideName, groomName, coupleNameFormat } = coupleInfo;
 
@@ -104,30 +101,10 @@ const ShowInvite = ({ currentUrl, guest }) => {
       </>
     );
 
-  // Venue info
-  const venueBrief = `${venue.name}, ${venue.city}, ${venue.country}`;
-  const weddingDateBrief = `${weddingDay}, ${weddingDate}`;
 
-  // Event info
+  // // Event info
   const eventTitle = `${coupleNameStr}'s Wedding`;
-  let eventDescription = `${weddingDateBrief} at ${venue.name}, ${venue.city}`;
-  if (guest.name) {
-    eventDescription = `Dear ${guest.name}, you are cordially invited to our wedding on ${weddingDate} at ${venue.name}. Looking forward to seeing you!`;
-  }
-
-  const startDateTime = new Date(calendarInfo.timeStartISO);
-  const endDateTime = new Date(calendarInfo.timeEndISO);
-
-  // Calendar payload
-  const calendarEvent = {
-    title: eventTitle,
-    description: eventDescription,
-    location: `${venue.city}, ${venue.country}`,
-    startDate: format(startDateTime, "yyyy-MM-dd"),
-    endDate: format(endDateTime, "yyyy-MM-dd"),
-    startTime: format(startDateTime, "HH:mm"),
-    endTime: format(endDateTime, "HH:mm"),
-  };
+  const eventDescription = `${weddingDay}, ${weddingDate}`;
 
   const storyContent = Array.from({ length: 5 }, (_, i) => {
     let customClass = "";
@@ -372,8 +349,6 @@ const ShowInvite = ({ currentUrl, guest }) => {
         description={eventDescription}
         guestName={guest.name}
         url={currentUrl}
-        date={weddingDateBrief}
-        venue={venueBrief}
         logo={resolvePath(ogTags.logo)}
         author={resolvePath("/")}
       />
@@ -549,7 +524,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
         </div>
       </section>
 
-      <section id="ceremony" className="contact_area">
+      <section id="ceremony" className="contact_area full-height">
         <div className="ceremony container">
           <img
             className="element-flower top left"
@@ -586,7 +561,31 @@ const ShowInvite = ({ currentUrl, guest }) => {
             </div>
           </div>
           <div className={`content ${locale} row align-items-center`}>
-            <div className={`content col-xs-12 col-sm-6 align-self-center`}>
+            {
+              ceremony.events.map(event => (
+                <div className={`content ${locale} col-xs-12 col-sm-6 align-self-center`}>
+                  <div className="event-type row">
+                    <span>{event.type}</span>
+                  </div>
+                  <div className="event-details row">
+                    <span>{event.details}</span>
+                    </div>
+                  <div className="event-place row">
+                    <span>{event.place}</span>
+                  </div>
+                  <div className="event-location row">
+                    <span>{event.location}</span>
+                  </div>
+                  <div className="map row">
+                    <a href={event.mapUrl} target="_blank" className="view-map">
+                      {ceremony.mapText}
+                    </a>
+                  </div>
+                </div>
+              ))
+            }
+
+            {/* <div className={`content col-xs-12 col-sm-6 align-self-center`}>
               <div className="image-banner row">
                 <img
                   className="element"
@@ -613,7 +612,7 @@ const ShowInvite = ({ currentUrl, guest }) => {
                   {venue.mapText}
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className={`timeline ${locale} row align-items-center`}>
             <div className="heading row container">
