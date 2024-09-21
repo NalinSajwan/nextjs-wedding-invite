@@ -35,7 +35,7 @@ const baseConfig = {
       {
         order: 2,
         type: "Hotel Location",
-        details: "Vietman - 18/10 (Check-in 2pm)",
+        details: "Vietnam - 18/10 (Check-in 2pm)",
         place: "Sunset Hill Hotel",
         location: "5/24 Nguyen Huu Canh Street - Ward 8 - Da Lat",
         mapUrl: "https://maps.app.goo.gl/rwQeyWtFK6mpWsrg8",
@@ -43,7 +43,7 @@ const baseConfig = {
       {
         order: 3,
         type: "Place of Event",
-        details: "Vietman - 19/10 (4pm)",
+        details: "Vietnam - 19/10 (4pm)",
         place: "J'adore Homestay",
         location: "A26 Nguyen Huu Canh Street - Ward 8 - Da Lat",
         mapUrl: "https://maps.app.goo.gl/4R2cKoFt297ys2HK7",
